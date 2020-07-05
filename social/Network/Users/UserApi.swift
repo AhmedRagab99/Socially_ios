@@ -21,26 +21,26 @@ class UserApi:BaseApi<UserNetworking>{
     }
     
     
-    func getUser(userId:String,completion:@escaping (Result<ProfileModel?,NSError>)->Void){
+    func getUser(userId:String,completion:@escaping (Result<ProfileModel?,ApiError>)->Void){
         self.fetchData(target: .getUser(userId: userId), responceClass: ProfileModel.self) { (result) in
             completion(result)
         }
     }
     
-    func followUser(followId:String,completion:@escaping (Result<User?,NSError>)->Void){
+    func followUser(followId:String,completion:@escaping (Result<User?,ApiError>)->Void){
         self.fetchData(target: .followUser(followId: followId), responceClass: User.self) { (result) in
                completion(result)
            }
        }
     
-    func allUsers(completion:@escaping (Result<[User]?,NSError>)->Void){
+    func allUsers(completion:@escaping (Result<[User]?,ApiError>)->Void){
         self.fetchData(target: .allUsers, responceClass: [User].self) { (result) in
                   completion(result)
               }
           }
     
     
-    func unFollowUser(unfollowId:String,completion:@escaping (Result<User?,NSError>)->Void){
+    func unFollowUser(unfollowId:String,completion:@escaping (Result<User?,ApiError>)->Void){
            self.fetchData(target: .unFollowUser(unfollowId: unfollowId), responceClass: User.self) { (result) in
                   completion(result)
               }

@@ -21,7 +21,7 @@ class AuthApi:BaseApi<AuthNetworking>{
     
     
     
-    func signIn(email:String,password:String,completion:@escaping (Result<UserModel?,NSError>)->Void){
+    func signIn(email:String,password:String,completion:@escaping (Result<UserModel?,ApiError>)->Void){
         self.fetchData(target: .singIn(email: email, password: password), responceClass: UserModel.self) { (result) in
             completion(result)
         }
@@ -29,7 +29,7 @@ class AuthApi:BaseApi<AuthNetworking>{
     
     
     
-    func signUp(email:String,name:String,picuture:String,password:String,completion:@escaping (Result<Message?,NSError>)->Void){
+    func signUp(email:String,name:String,picuture:String,password:String,completion:@escaping (Result<Message?,ApiError>)->Void){
         self.fetchData(target: .signUp(name: name, email: email, piciture: picuture, password: password), responceClass: Message.self) { (result) in
             completion(result)
         }

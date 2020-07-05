@@ -12,4 +12,6 @@ import Foundation
 
 struct Constants {
     static let baseUrl = "http://127.0.0.1:4000/api/v1"
+    static let imgurBaseUrl = "https://api.imgur.com/3/image"
+    static let clientId = "Client-ID d4f2deee600560b"
 }

@@ -17,7 +17,7 @@ struct PostModel: Codable {
 }
 
 // MARK: - Post
-struct Post: Codable {
+struct Post: Codable,Identifiable {
     var pic: String?
     var likes: [String]?
     var id, text: String?

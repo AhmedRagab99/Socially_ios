@@ -7,4 +7,5 @@ target 'social' do
 
   # Pods for social
 pod 'Alamofire'
+pod 'SDWebImageSwiftUI'
 end

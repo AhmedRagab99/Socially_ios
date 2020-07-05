@@ -16,7 +16,7 @@ struct UserModel:Codable {
 
 
 // MARK: - User
-struct User: Codable {
+struct User: Codable,Identifiable {
     var pic: String?
     var id: String?
     var name: String?

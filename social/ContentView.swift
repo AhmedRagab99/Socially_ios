@@ -261,21 +261,21 @@ struct ContentView: View {
     }
     
     
-    func fetch (){
-        PostApi.shared.getAllPosts { (result) in
-            
-            switch result{
-                
-            case .success(let responce):
-                print(responce ?? "")
-                self.test = responce?.posts
-                
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
+//    func fetch (){
+//        PostApi.shared.getAllPosts { (result) in
+//            
+//            switch result{
+//                
+//            case .success(let responce):
+//                print(responce ?? "")
+//                self.test = responce?.posts
+//                
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
+//    }
+//    
     
     func getMyPosts(){
         PostApi.shared.getPostsByMe { (result) in

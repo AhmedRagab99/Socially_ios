@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		8ACE61F7F0C9EF45249A27EF /* Pods_social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8355C258A49CD9786423BEA4 /* Pods_social.framework */; };
+		D007B90B24B172A00033A89B /* helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007B90A24B172A00033A89B /* helper.swift */; };
+		D007B90D24B18C180033A89B /* pushContentUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007B90C24B18C180033A89B /* pushContentUp.swift */; };
+		D007B91124B191990033A89B /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = D007B90F24B191990033A89B /* loading.json */; };
+		D007B91224B191990033A89B /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = D007B91024B191990033A89B /* success.json */; };
+		D007B91C24B1A18D0033A89B /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007B91B24B1A18D0033A89B /* SignUpView.swift */; };
+		D00E04CE24B0ADBB00403532 /* postsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00E04CD24B0ADBB00403532 /* postsObserver.swift */; };
+		D00E04D024B0D07900403532 /* AuthObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00E04CF24B0D07900403532 /* AuthObserver.swift */; };
+		D00E04D224B0D0B100403532 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00E04D124B0D0B100403532 /* TabBar.swift */; };
+		D03BAA5A24B1CB7400C1F34D /* ImageUploadModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03BAA5924B1CB7400C1F34D /* ImageUploadModel.swift */; };
 		D03E202F24A68A2600553E14 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03E202E24A68A2600553E14 /* TargetType.swift */; };
 		D03E203124A68DC200553E14 /* BaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03E203024A68DC200553E14 /* BaseApi.swift */; };
 		D03E203324A6910300553E14 /* CustomInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03E203224A6910300553E14 /* CustomInterceptor.swift */; };
@@ -26,13 +35,24 @@
 		D0B2B4E224A6B49500F641B6 /* AuthApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B2B4E124A6B49500F641B6 /* AuthApi.swift */; };
 		D0CA9A4624A6BEB7006B90EA /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA9A4524A6BEB7006B90EA /* UserModel.swift */; };
 		D0CA9A4824A6C01F006B90EA /* constatnts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA9A4724A6C01F006B90EA /* constatnts.swift */; };
-		D0E1513824A807C60003F007 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E1513724A807C60003F007 /* SignUp.swift */; };
+		D0D07DB024B1B2EA00E4DCDC /* imagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D07DAF24B1B2EA00E4DCDC /* imagePicker.swift */; };
+		D0D148E924B143F7006955AC /* signIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D148E824B143F7006955AC /* signIn.swift */; };
+		D0D532A524A977530064CBF1 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D532A424A977530064CBF1 /* PostView.swift */; };
 		D0E1513A24A84E2C0003F007 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E1513924A84E2C0003F007 /* ProfileModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		684119A96406D5F001ABC990 /* Pods-social.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-social.release.xcconfig"; path = "Target Support Files/Pods-social/Pods-social.release.xcconfig"; sourceTree = "<group>"; };
 		8355C258A49CD9786423BEA4 /* Pods_social.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_social.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D007B90A24B172A00033A89B /* helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = helper.swift; sourceTree = "<group>"; };
+		D007B90C24B18C180033A89B /* pushContentUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pushContentUp.swift; sourceTree = "<group>"; };
+		D007B90F24B191990033A89B /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		D007B91024B191990033A89B /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
+		D007B91B24B1A18D0033A89B /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		D00E04CD24B0ADBB00403532 /* postsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = postsObserver.swift; sourceTree = "<group>"; };
+		D00E04CF24B0D07900403532 /* AuthObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthObserver.swift; sourceTree = "<group>"; };
+		D00E04D124B0D0B100403532 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		D03BAA5924B1CB7400C1F34D /* ImageUploadModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadModel.swift; sourceTree = "<group>"; };
 		D03E202E24A68A2600553E14 /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
 		D03E203024A68DC200553E14 /* BaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApi.swift; sourceTree = "<group>"; };
 		D03E203224A6910300553E14 /* CustomInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInterceptor.swift; sourceTree = "<group>"; };
@@ -53,7 +73,9 @@
 		D0B2B4E124A6B49500F641B6 /* AuthApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthApi.swift; sourceTree = "<group>"; };
 		D0CA9A4524A6BEB7006B90EA /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		D0CA9A4724A6C01F006B90EA /* constatnts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constatnts.swift; sourceTree = "<group>"; };
-		D0E1513724A807C60003F007 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		D0D07DAF24B1B2EA00E4DCDC /* imagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imagePicker.swift; sourceTree = "<group>"; };
+		D0D148E824B143F7006955AC /* signIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signIn.swift; sourceTree = "<group>"; };
+		D0D532A424A977530064CBF1 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		D0E1513924A84E2C0003F007 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		E41E3F130F9B77B04F458DD8 /* Pods-social.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-social.debug.xcconfig"; path = "Target Support Files/Pods-social/Pods-social.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +99,33 @@
 				684119A96406D5F001ABC990 /* Pods-social.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		D007B90524B14F420033A89B /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				D0D07DAF24B1B2EA00E4DCDC /* imagePicker.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		D007B90E24B191990033A89B /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				D007B90F24B191990033A89B /* loading.json */,
+				D007B91024B191990033A89B /* success.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
+		D00E04CC24B0AD1300403532 /* observers */ = {
+			isa = PBXGroup;
+			children = (
+				D00E04CD24B0ADBB00403532 /* postsObserver.swift */,
+				D00E04CF24B0D07900403532 /* AuthObserver.swift */,
+				D007B90C24B18C180033A89B /* pushContentUp.swift */,
+			);
+			path = observers;
 			sourceTree = "<group>";
 		};
 		D03E202C24A6898D00553E14 /* Network */ = {
@@ -115,6 +164,7 @@
 				D03E203824A6980B00553E14 /* postModel.swift */,
 				D0CA9A4524A6BEB7006B90EA /* UserModel.swift */,
 				D0E1513924A84E2C0003F007 /* ProfileModel.swift */,
+				D03BAA5924B1CB7400C1F34D /* ImageUploadModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -140,17 +190,21 @@
 		D076EF8C24A5BF1E00BC4D78 /* social */ = {
 			isa = PBXGroup;
 			children = (
+				D007B90E24B191990033A89B /* Lottie */,
+				D007B90524B14F420033A89B /* UIKit */,
+				D00E04CC24B0AD1300403532 /* observers */,
 				D0E1513624A807AD0003F007 /* Views */,
 				D03E203724A697F600553E14 /* Models */,
 				D03E202C24A6898D00553E14 /* Network */,
 				D076EF8D24A5BF1E00BC4D78 /* AppDelegate.swift */,
+				D007B90A24B172A00033A89B /* helper.swift */,
+				D0CA9A4724A6C01F006B90EA /* constatnts.swift */,
 				D076EF8F24A5BF1E00BC4D78 /* SceneDelegate.swift */,
 				D076EF9124A5BF1E00BC4D78 /* ContentView.swift */,
 				D076EF9324A5BF1F00BC4D78 /* Assets.xcassets */,
 				D076EF9824A5BF1F00BC4D78 /* LaunchScreen.storyboard */,
 				D076EF9B24A5BF1F00BC4D78 /* Info.plist */,
 				D076EF9524A5BF1F00BC4D78 /* Preview Content */,
-				D0CA9A4724A6C01F006B90EA /* constatnts.swift */,
 			);
 			path = social;
 			sourceTree = "<group>";
@@ -184,7 +238,10 @@
 		D0E1513624A807AD0003F007 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D0E1513724A807C60003F007 /* SignUp.swift */,
+				D0D532A424A977530064CBF1 /* PostView.swift */,
+				D00E04D124B0D0B100403532 /* TabBar.swift */,
+				D0D148E824B143F7006955AC /* signIn.swift */,
+				D007B91B24B1A18D0033A89B /* SignUpView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -257,8 +314,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D007B91224B191990033A89B /* success.json in Resources */,
 				D076EF9A24A5BF1F00BC4D78 /* LaunchScreen.storyboard in Resources */,
 				D076EF9724A5BF1F00BC4D78 /* Preview Assets.xcassets in Resources */,
+				D007B91124B191990033A89B /* loading.json in Resources */,
 				D076EF9424A5BF1F00BC4D78 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,19 +375,28 @@
 				D0B2B4E224A6B49500F641B6 /* AuthApi.swift in Sources */,
 				D0B2B4DE24A6B42B00F641B6 /* UserNetworking.swift in Sources */,
 				D0B2B4DC24A6B41D00F641B6 /* UserApi.swift in Sources */,
+				D00E04D024B0D07900403532 /* AuthObserver.swift in Sources */,
 				D0CA9A4824A6C01F006B90EA /* constatnts.swift in Sources */,
+				D00E04D224B0D0B100403532 /* TabBar.swift in Sources */,
+				D0D07DB024B1B2EA00E4DCDC /* imagePicker.swift in Sources */,
 				D03E203924A6980B00553E14 /* postModel.swift in Sources */,
 				D03E202F24A68A2600553E14 /* TargetType.swift in Sources */,
+				D03BAA5A24B1CB7400C1F34D /* ImageUploadModel.swift in Sources */,
 				D0B2B4E024A6B48A00F641B6 /* AuthNetworking.swift in Sources */,
 				D076EF8E24A5BF1E00BC4D78 /* AppDelegate.swift in Sources */,
 				D0CA9A4624A6BEB7006B90EA /* UserModel.swift in Sources */,
 				D03E203324A6910300553E14 /* CustomInterceptor.swift in Sources */,
+				D007B91C24B1A18D0033A89B /* SignUpView.swift in Sources */,
+				D0D148E924B143F7006955AC /* signIn.swift in Sources */,
 				D0E1513A24A84E2C0003F007 /* ProfileModel.swift in Sources */,
 				D076EF9024A5BF1E00BC4D78 /* SceneDelegate.swift in Sources */,
 				D03E203124A68DC200553E14 /* BaseApi.swift in Sources */,
-				D0E1513824A807C60003F007 /* SignUp.swift in Sources */,
 				D03E203B24A6999400553E14 /* PostApi.swift in Sources */,
+				D0D532A524A977530064CBF1 /* PostView.swift in Sources */,
+				D007B90D24B18C180033A89B /* pushContentUp.swift in Sources */,
+				D00E04CE24B0ADBB00403532 /* postsObserver.swift in Sources */,
 				D076EF9224A5BF1E00BC4D78 /* ContentView.swift in Sources */,
+				D007B90B24B172A00033A89B /* helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +534,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"social/Preview Content\"";
 				DEVELOPMENT_TEAM = 7Z6V95G685;
 				ENABLE_PREVIEWS = YES;
@@ -487,6 +556,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"social/Preview Content\"";
 				DEVELOPMENT_TEAM = 7Z6V95G685;
 				ENABLE_PREVIEWS = YES;
