@@ -21,163 +21,166 @@ struct SignUpView: View {
     var link = ""
     @State private var pic = ""
     @State private var showAlert = false
-
     @State var showImagePicker: Bool = false
-    
     @State var pickerImage: UIImage? = nil
        
     
         var body: some View {
             NavigationView {
       
-                VStack(alignment: .center) {
-       
-                    //3
-                    VStack {
-                        Image(uiImage: (pickerImage ?? UIImage(named:"test"))!)
-                            .resizable()
-                            .frame(width: 250, height: 250)
-                            .clipShape(Circle())
-                            .overlay(Circle().stroke(Color.white, lineWidth: 4))
-                            .shadow(radius: 10.0, x: 20, y: 10)
-                            .padding(.bottom, 50)
-                            .onTapGesture {
-                                withAnimation{
-                                    self.showImagePicker.toggle()
-                                }
-                        }
-                            //5
-                            .sheet(isPresented: $showImagePicker, onDismiss: {
-                                self.showImagePicker = false
-                            }, content: {
-                                ImagePicker(image: self.$pickerImage, isShown: self.$showImagePicker)
-                        })
-                        
-                        
-                        Button("Upload") {
+                ZStack {
+                    if self.Authbserver.isLoading == true{
+                                           VStack{
+                                               LoadingView(isLoading:self.Authbserver.isLoading,retryAction: nil)
+                                           }
                            
-                             // << upload
-                                }
-                    }
-                    
-                    
-                    
+                                       }
+                    VStack(alignment: .center) {
+           
+                        //3
+                        VStack {
+                            Image(uiImage: (pickerImage ?? UIImage(named:"test"))!)
+                                .resizable()
+                                .frame(width: 250, height: 250)
+                                .clipShape(Circle())
+                                .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                                .shadow(radius: 10.0, x: 20, y: 10)
+                                .padding(.bottom, 50)
+                                .onTapGesture {
+                                    withAnimation{
+                                        self.showImagePicker.toggle()
+                                    }
+                            }
+                                //5
+                                .sheet(isPresented: $showImagePicker, onDismiss: {
+                                    self.showImagePicker = false
+                                }, content: {
+                                    ImagePicker(image: self.$pickerImage, isShown: self.$showImagePicker)
+                            })
+                          
+                        }
+                        
+                        
+                        
 
-                        
-                    
-                Spacer()
-                    
-                  
-                    
-                    VStack {
-                        HStack {
-                            Image(systemName: "person.crop.circle.fill")
-                                .foregroundColor(Color(#colorLiteral(red: 0.6549019608, green: 0.7137254902, blue: 0.862745098, alpha: 1)))
-                                .frame(width: 44, height: 44)
-                                .background(Color.white)
-                                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                                .shadow(color: Color.black.opacity(0.15), radius: 5, x: 0, y: 5)
-                                .padding(.leading)
                             
-                            TextField("Your Email".uppercased(), text: $email)
-                                .keyboardType(.emailAddress)
-                                .font(.subheadline)
-                                //                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                                .padding(.leading)
-                                .frame(height: 44)
-                                .onTapGesture {
-                                    
-                            }
-                        }
                         
-                        Divider().padding(.leading, 80)
-                        
-                        
-                        HStack {
-                            Image(systemName: "person.crop.circle.fill")
-                                .foregroundColor(Color(#colorLiteral(red: 0.6549019608, green: 0.7137254902, blue: 0.862745098, alpha: 1)))
-                                .frame(width: 44, height: 44)
-                                .background(Color.white)
-                                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                                .shadow(color: Color.black.opacity(0.15), radius: 5, x: 0, y: 5)
-                                .padding(.leading)
-                            
-                            TextField("Your Name".uppercased(), text: $name)
-                                .keyboardType(.default)
-                                .font(.subheadline)
-                                //                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                                .padding(.leading)
-                                .frame(height: 44)
-                                .onTapGesture {
-                                    
-                            }
-                        }
-                        
-                        Divider().padding(.leading, 80)
-                        
-                        
-                        
-                        
-                        HStack {
-                            Image(systemName: "lock.fill")
-                                .foregroundColor(Color(#colorLiteral(red: 0.6549019608, green: 0.7137254902, blue: 0.862745098, alpha: 1)))
-                                .frame(width: 44, height: 44)
-                                .background(Color.white)
-                                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                                .shadow(color: Color.black.opacity(0.15), radius: 5, x: 0, y: 5)
-                                .padding(.leading)
-                            
-                            SecureField("Password".uppercased(), text: $password)
-                                .keyboardType(.default)
-                                .font(.subheadline)
-                                
-                                .padding(.leading)
-                                .frame(height: 44)
-                            
-                        }
-                    }
-                    .padding()
-                    
-                    Button(action: {
-                         self.uploadPhoto(url: Constants.imgurBaseUrl, image: self.pickerImage!, header: ["Authorization":Constants.clientId])
-              
-                        print(self.pic)
-                        
-                    }) {
-                        Text("Sign Up")
-                            .font(.headline)
-                            .foregroundColor(.primary)
-                            .padding()
-                            .frame(width: 300, height: 50)
-                            .background(Color.green.opacity(0.8))
-                            .cornerRadius(20.0)
-                            .shadow(radius: 5)
-                    }
-                    .alert(isPresented: $showAlert) { () -> Alert in
-                        Alert(title: Text("Login Error"), message: Text("\(self.Authbserver.error)"), primaryButton: .default(Text("Okay"), action: {
-                            print("Okay Click")
-                        }), secondaryButton: .destructive(Text("Dismiss")))
-                    }
-                    .padding(.bottom)
-                    
-                    HStack(spacing:2){
-                        Spacer()
-                        Text("have an acount?")
-                        Button(action: {
-                            helper.goSignIn()
-                        } ){
-                            Text("Sign In now")
-                                .font(.headline)
-                                .foregroundColor(.green)
-                                .padding()
-                        }
-                        
-                        Spacer()
-                    }
-                    
                     Spacer()
+                        
+                      
+                        
+                        VStack {
+                            HStack {
+                                Image(systemName: "person.crop.circle.fill")
+                                    .foregroundColor(Color(#colorLiteral(red: 0.6549019608, green: 0.7137254902, blue: 0.862745098, alpha: 1)))
+                                    .frame(width: 44, height: 44)
+                                    .background(Color.white)
+                                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                                    .shadow(color: Color.black.opacity(0.15), radius: 5, x: 0, y: 5)
+                                    .padding(.leading)
+                                
+                                TextField("Your Email".uppercased(), text: $email)
+                                    .keyboardType(.emailAddress)
+                                    .font(.subheadline)
+                                    //                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                    .padding(.leading)
+                                    .frame(height: 44)
+                                    .onTapGesture {
+                                        
+                                }
+                            }
+                            
+                            Divider().padding(.leading, 80)
+                            
+                            
+                            HStack {
+                                Image(systemName: "pencil")
+                                    .foregroundColor(Color(#colorLiteral(red: 0.6549019608, green: 0.7137254902, blue: 0.862745098, alpha: 1)))
+                                    .frame(width: 44, height: 44)
+                                    .background(Color.white)
+                                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                                    .shadow(color: Color.black.opacity(0.15), radius: 5, x: 0, y: 5)
+                                    .padding(.leading)
+                                
+                                TextField("Your Name".uppercased(), text: $name)
+                                    .keyboardType(.default)
+                                    .font(.subheadline)
+                                    //                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                    .padding(.leading)
+                                    .frame(height: 44)
+                                    .onTapGesture {
+                                        
+                                }
+                            }
+                            
+                            Divider().padding(.leading, 80)
+                            
+                            
+                            
+                            
+                            HStack {
+                                Image(systemName: "lock.fill")
+                                    .foregroundColor(Color(#colorLiteral(red: 0.6549019608, green: 0.7137254902, blue: 0.862745098, alpha: 1)))
+                                    .frame(width: 44, height: 44)
+                                    .background(Color.white)
+                                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                                    .shadow(color: Color.black.opacity(0.15), radius: 5, x: 0, y: 5)
+                                    .padding(.leading)
+                                
+                                SecureField("Password".uppercased(), text: $password)
+                                    .keyboardType(.default)
+                                    .font(.subheadline)
+                                    
+                                    .padding(.leading)
+                                    .frame(height: 44)
+                                
+                            }
+                        }
+                        .padding()
+                        
+                        Button(action: {
+                            self.Authbserver.isLoading = true
+
+                             self.uploadPhoto(url: Constants.imgurBaseUrl, image: self.pickerImage!, header: ["Authorization":Constants.clientId])
+                  
+                            print(self.pic)
+                            
+                        }) {
+                            Text("Sign Up")
+                                .font(.headline)
+                                .foregroundColor(.primary)
+                                .padding()
+                                .frame(width: 300, height: 50)
+                                .background(Color.green.opacity(0.8))
+                                .cornerRadius(20.0)
+                                .shadow(radius: 5)
+                        }
+                        .alert(isPresented: $showAlert) { () -> Alert in
+                            Alert(title: Text("Login Error"), message: Text("\(self.Authbserver.error)"), primaryButton: .default(Text("Okay"), action: {
+                                print("Okay Click")
+                            }), secondaryButton: .destructive(Text("Dismiss")))
+                        }
+                        .padding(.bottom)
+                        
+                        HStack(spacing:2){
+                            Spacer()
+                            Text("have an acount?")
+                            Button(action: {
+                                helper.goSignIn()
+                            } ){
+                                Text("Sign In now")
+                                    .font(.headline)
+                                    .foregroundColor(.green)
+                                    .padding()
+                            }
+                            
+                            Spacer()
+                        }
+                        
+                        Spacer()
+                    }
+                    .offset(y: -keyboardResponder.currentHeight*0.9)
                 }
-                .offset(y: -keyboardResponder.currentHeight*0.9)
                 }
                 .navigationBarTitle("Join us Now !")
             }

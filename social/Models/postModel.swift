@@ -16,6 +16,7 @@ struct PostModel: Codable {
    
 }
 
+
 // MARK: - Post
 struct Post: Codable,Identifiable {
     var pic: String?
