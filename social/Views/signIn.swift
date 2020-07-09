@@ -91,22 +91,20 @@ struct LoginView: View {
                     Button(action: {
                         self.Authbserver.isLoading = true
                         self.Authbserver.signIn(email: self.email, password: self.password)
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             print(self.Authbserver.isLogIn)
                       
                             if self.Authbserver.isLogIn == true{
                                 
                                 helper.goHome()
-                               
-
+                
                                 self.showAlert = false
                                
                             }
                             else {
+                                DispatchQueue.main.asyncAfter(deadline: .now()+1.2){
                                 self.showAlert.toggle()
-                            }
+                                }}
                             
-                        }
                         
                     }) {
                         
@@ -152,11 +150,7 @@ struct LoginView: View {
         .offset(y: -keyboardResponder.currentHeight*0.9)
         
     }
-    
-    
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
+  
 }
 
 

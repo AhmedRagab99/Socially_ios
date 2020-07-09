@@ -10,19 +10,27 @@ import SwiftUI
 
 class helper:NSObject{
     
+    
+    
+    
+    
+    class func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+    
     class func goHome() {
-           if let window = UIApplication.shared.windows.first {
-               window.rootViewController = UIHostingController(rootView: TabBar().animation(.easeInOut(duration: 0.7)))
-               window.makeKeyAndVisible()
-           }
-       }
+        if let window = UIApplication.shared.windows.first {
+            window.rootViewController = UIHostingController(rootView: TabBar().animation(.easeInOut(duration: 0.7)))
+            window.makeKeyAndVisible()
+        }
+    }
     
     class func goSignIn() {
-             if let window = UIApplication.shared.windows.first {
-                 window.rootViewController = UIHostingController(rootView: LoginView().animation(.easeInOut(duration: 0.7)))
-                 window.makeKeyAndVisible()
-             }
-         }
+        if let window = UIApplication.shared.windows.first {
+            window.rootViewController = UIHostingController(rootView: LoginView().animation(.easeInOut(duration: 0.7)))
+            window.makeKeyAndVisible()
+        }
+    }
     
     class func goSignUp() {
         if let window = UIApplication.shared.windows.first {
@@ -32,26 +40,26 @@ class helper:NSObject{
     }
     
     class func restartApp()-> AnyView {
-  
+        
         if getApiToken() == nil {
-
+            
             return AnyView(LoginView())
         } else {
             // go to main screen
             return AnyView(TabBar())
-                
+            
         }
         
     }
     
     class func saveApiToken(token: String) {
         // save api token to UserDefaults
-       UserDefaults.standard.setValue("Bearer \(token)", forKeyPath: "token")
+        UserDefaults.standard.setValue("Bearer \(token)", forKeyPath: "token")
     }
     class func deleteApiToken(){
-           // save api token to UserDefaults
+        // save api token to UserDefaults
         UserDefaults.standard.removeObject(forKey: "token")
-       }
+    }
     
     class func getApiToken() -> String? {
         let def = UserDefaults.standard
@@ -59,11 +67,5 @@ class helper:NSObject{
     }
     
     
-  class  func convertDateFormatter(date: String) -> String {
-     let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        let date = dateFormatter.date(from:date)
-    return "(\(date)"
-    }
+  
 }

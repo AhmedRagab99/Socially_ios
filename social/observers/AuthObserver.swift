@@ -42,17 +42,26 @@ class AuthObserver:ObservableObject{
                 
             case .success(let responce ):
                 print(responce ?? "")
-                DispatchQueue.main.async {
                     self.isLogIn.toggle()
-                    self.isLoading.toggle()
-
-                }
+                
+                self.isLoading.toggle()
+                
                 guard let data = responce else { return  }
+                
                 guard let token = data.token else {return}
+                
                 helper.saveApiToken(token: token)
+                
                 UserDefaults.standard.setValue(data.user?.pic, forKeyPath: "userPic")
-
+                 UserDefaults.standard.setValue(data.user?.id, forKeyPath: "userId")
+                    UserDefaults.standard.setValue(data.user?.name, forKeyPath: "userName")
+                UserDefaults.standard.setValue(data.user?.followers, forKeyPath: "followers")
+                   UserDefaults.standard.setValue(data.user?.following, forKeyPath: "following")
+                
                 self.signInPuplisher = data
+                
+                helper.goHome()
+                
             case .failure(let error):
                 self.isError.toggle()
                 self.error = error.localizedDescription

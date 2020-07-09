@@ -37,7 +37,7 @@ struct ContentView: View {
                 
                 Button(action: {
                     
-                    self.likePost(postId: "5ef1740e7935bd16c7f5e60e")
+//                    self.likePost(postId: "5ef1740e7935bd16c7f5e60e")
                 }) {
                     Text("like Posts")
                         .foregroundColor(.green)
@@ -190,16 +190,7 @@ struct ContentView: View {
         }
     }
     //MARK:- Post functions
-    func likePost(postId:String){
-        PostApi.shared.likePost(postId: postId) { (result) in
-            switch result{
-            case.success(let r):
-                print(r)
-            case .failure(let err):
-                print(err)
-            }
-        }
-    }
+   
     
     func unlikePost(postId:String){
         PostApi.shared.unlikePost(postId: postId) { (result) in

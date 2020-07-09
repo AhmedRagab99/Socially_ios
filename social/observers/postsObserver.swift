@@ -15,8 +15,11 @@ class PostsObserver:ObservableObject{
     
     @Published var postObserver = [Post]()
     @Published var postData = Post()
-    @Published var message = Message()
+    @Published var likePostData = Post()
+    @Published var unlikePostData = Post()
 
+    @Published var message = Message()
+    
     @Published var isError = false
     @Published var error = ""
     @Published var isLoading = false
@@ -32,13 +35,12 @@ class PostsObserver:ObservableObject{
         PostApi.shared.createPost(text: text, imageUrl: imageUrl) { (result) in
             self.isLoading = true
             switch result{
-
+                
             case .success(let responce):
                 guard let data = responce else {return}
                 DispatchQueue.main.async {
                     self.postData = data
                     self.isLoading.toggle()
-
                 }
             case .failure(let error):
                 self.isError.toggle()
@@ -52,62 +54,62 @@ class PostsObserver:ObservableObject{
     
     
     func deletePost(postId:String){
-           PostApi.shared.deletePost(postId: postId) { (result) in
+        PostApi.shared.deletePost(postId: postId) { (result) in
             self.isLoading = true
-
-               switch result{
-                   
-               case .success(let responce):
-                    guard let data = responce else {return}
-                DispatchQueue.main.async {
-                                  self.message = data
-                                  self.isLoading.toggle()
-
-                              }
+            
+            switch result{
                 
-               case .failure(let error):
+            case .success(let responce):
+                guard let data = responce else {return}
+                DispatchQueue.main.async {
+                    self.message = data
+                    self.isLoading.toggle()
+                    
+                }
+                
+            case .failure(let error):
                 self.isError.toggle()
-                           self.isLoading=false
-                           self.error = error.localizedDescription
-                           print(error.localizedDescription)
-                           print(error)
-               }
-           }
-       }
+                self.isLoading=false
+                self.error = error.localizedDescription
+                print(error.localizedDescription)
+                print(error)
+            }
+        }
+    }
     
     func getFollowingPosts(){
-           PostApi.shared.getFollowingPosts{ (result) in
-             self.isLoading = true
-
-                      switch result{
-                      case .success(let responce):
-                          self.isLoading.toggle()
-                          guard let data = responce?.posts else {return}
-                          DispatchQueue.main.async {
-                              self.postObserver = data
-
-                          }
-                      case .failure(let error):
-                          self.isError.toggle()
-                          self.isLoading.toggle()
-                          self.error = error.localizedDescription
-                          print(error.localizedDescription)
-                          
-                      }
-           }
-       }
-    
-    func getMyPosts(){
-        PostApi.shared.getPostsByMe { (result) in
+        PostApi.shared.getFollowingPosts{ (result) in
             self.isLoading = true
-
+            
             switch result{
             case .success(let responce):
                 self.isLoading.toggle()
                 guard let data = responce?.posts else {return}
                 DispatchQueue.main.async {
                     self.postObserver = data
-
+                    
+                }
+            case .failure(let error):
+                self.isError.toggle()
+                self.isLoading.toggle()
+                self.error = error.localizedDescription
+                print(error.localizedDescription)
+                
+            }
+        }
+    }
+    
+    func getMyPosts(){
+        PostApi.shared.getPostsByMe { (result) in
+            self.isLoading = true
+            
+            switch result{
+            case .success(let responce):
+                self.isLoading.toggle()
+                guard let data = responce?.posts else {return}
+                DispatchQueue.main.async {
+                    self.postObserver = data
+                    
                 }
             case .failure(let error):
                 self.isError.toggle()
@@ -137,6 +139,51 @@ class PostsObserver:ObservableObject{
             }
         }
     }
+    
+    
+    
+    func likePost(postId:String){
+        PostApi.shared.likePost(postId: postId) { (result) in
+         
+            switch result{
+            case .success(let responce):
+                guard let data = responce else {return}
+                DispatchQueue.main.async {
+                    self.likePostData = data
+                  
+
+                }
+            case .failure(let error):
+                self.isError.toggle()
+          
+                self.error = error.localizedDescription
+                print(error.localizedDescription)
+                
+            }
+        }
+    }
+    
+    
+    func unlikePost(postId:String){
+           PostApi.shared.unlikePost(postId: postId) { (result) in
+           
+                      switch result{
+                      case .success(let responce):
+                          guard let data = responce else {return}
+                          DispatchQueue.main.async {
+                              self.unlikePostData = data
+                           
+
+                          }
+                      case .failure(let error):
+                          self.isError.toggle()
+                         
+                          self.error = error.localizedDescription
+                          print(error.localizedDescription)
+                          
+                      }
+                  }
+       }
     
     
 }

@@ -12,9 +12,9 @@ import UIKit
 
 struct SignUpView: View {
     
-       @ObservedObject var Authbserver = AuthObserver()
-        @ObservedObject var keyboardResponder = KeyboardResponder()
-        
+    @ObservedObject var Authbserver = AuthObserver()
+    @ObservedObject var keyboardResponder = KeyboardResponder()
+    
     @State private var email = ""
     @State private var password = ""
     @State private var name = ""
@@ -23,20 +23,21 @@ struct SignUpView: View {
     @State private var showAlert = false
     @State var showImagePicker: Bool = false
     @State var pickerImage: UIImage? = nil
-       
     
-        var body: some View {
-            NavigationView {
-      
+    
+    var body: some View {
+        NavigationView {
+            
+            ScrollView{
                 ZStack {
                     if self.Authbserver.isLoading == true{
-                                           VStack{
-                                               LoadingView(isLoading:self.Authbserver.isLoading,retryAction: nil)
-                                           }
-                           
-                                       }
+                        VStack{
+                            LoadingView(isLoading:self.Authbserver.isLoading,retryAction: nil)
+                        }
+                        
+                    }
                     VStack(alignment: .center) {
-           
+                        
                         //3
                         VStack {
                             Image(uiImage: (pickerImage ?? UIImage(named:"test"))!)
@@ -56,18 +57,18 @@ struct SignUpView: View {
                                     self.showImagePicker = false
                                 }, content: {
                                     ImagePicker(image: self.$pickerImage, isShown: self.$showImagePicker)
-                            })
-                          
+                                })
+                            
                         }
                         
                         
                         
-
-                            
                         
-                    Spacer()
                         
-                      
+                        
+                        Spacer()
+                        
+                        
                         
                         VStack {
                             HStack {
@@ -140,9 +141,9 @@ struct SignUpView: View {
                         
                         Button(action: {
                             self.Authbserver.isLoading = true
-
-                             self.uploadPhoto(url: Constants.imgurBaseUrl, image: self.pickerImage!, header: ["Authorization":Constants.clientId])
-                  
+                            
+                            self.uploadPhoto(url: Constants.imgurBaseUrl, image: self.pickerImage!, header: ["Authorization":Constants.clientId])
+                            
                             print(self.pic)
                             
                         }) {
@@ -180,10 +181,20 @@ struct SignUpView: View {
                         Spacer()
                     }
                     .offset(y: -keyboardResponder.currentHeight*0.9)
+                   
+                    
+                    
+                    
+                    
                 }
-                }
-                .navigationBarTitle("Join us Now !")
+                
+                
             }
+       
+            .padding(.vertical)
+        }
+        
+    }
     
     
     
@@ -193,58 +204,51 @@ struct SignUpView: View {
         url: String,
         image: UIImage,
         header: [String:String]) {
-
-
+        
+        
         let httpHeaders = HTTPHeaders(header)
         AF.upload(multipartFormData: { multiPart in
-          
+            
             multiPart.append(image.jpegData(compressionQuality: 0.6)!, withName: "image", fileName: "file.jpg", mimeType: "image/jpg")
         }, to: url, method: .post, headers: httpHeaders)
             .responseJSON{ response  in
-            switch response.result {
-            case .success(let resut):
-                print("upload success result: \(String(describing: resut))")
-                var parsedResult: [String: AnyObject]
-                                   do {
-                                    parsedResult = try JSONSerialization.jsonObject(with: response.data!, options: .allowFragments) as! [String: AnyObject]
-                                       if let dataJson = parsedResult["data"] as? [String: Any] {
-                                           print("Link is : \(dataJson["link"] as? String ?? "Link not found")")
-                                        self.pic = dataJson["link"] as! String
-                                        print(self.pic)
-                                        
-                                                      self.Authbserver.signUp(email: self.email, name: self.name, password: self.password, pic: self.pic)
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                            print(self.Authbserver.isSignUn)
-                                            
-                                            if self.Authbserver.isSignUn == true{
-                                                
-                                                helper.goSignIn()
-                                                self.showAlert = false
-                                            }
-                                            else {
-                                                self.showAlert.toggle()
-                                            }
-                                            
-                                        }
-
-                                       }
-                                   } catch {
-                                       // Display an error
-                                   }
-            case .failure(let err):
-                print("upload err: \(err)")
-            }
+                switch response.result {
+                case .success(let resut):
+                    print("upload success result: \(String(describing: resut))")
+                    var parsedResult: [String: AnyObject]
+                    do {
+                        parsedResult = try JSONSerialization.jsonObject(with: response.data!, options: .allowFragments) as! [String: AnyObject]
+                        if let dataJson = parsedResult["data"] as? [String: Any] {
+                            print("Link is : \(dataJson["link"] as? String ?? "Link not found")")
+                            self.pic = dataJson["link"] as! String
+                            print(self.pic)
+                            
+                            self.Authbserver.signUp(email: self.email, name: self.name, password: self.password, pic: self.pic)
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                print(self.Authbserver.isSignUn)
+                                
+                                if self.Authbserver.isSignUn == true{
+                                    
+                                    helper.goSignIn()
+                                    self.showAlert = false
+                                }
+                                else {
+                                    self.showAlert.toggle()
+                                }
+                                
+                            }
+                            
+                        }
+                    } catch {
+                        // Display an error
+                    }
+                case .failure(let err):
+                    print("upload err: \(err)")
+                }
         }
     }
     
-    
-    
-    
-        
-        func hideKeyboard() {
-            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-        }
-    }
+}
 
 struct SignUp_Previews: PreviewProvider {
     static var previews: some View {
