@@ -61,11 +61,6 @@ struct SignUpView: View {
                             
                         }
                         
-                        
-                        
-                        
-                        
-                        
                         Spacer()
                         
                         
@@ -182,10 +177,6 @@ struct SignUpView: View {
                     }
                     .offset(y: -keyboardResponder.currentHeight*0.9)
                    
-                    
-                    
-                    
-                    
                 }
                 
                 

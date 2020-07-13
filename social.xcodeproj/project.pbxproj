@@ -42,6 +42,9 @@
 		D0B2B4DE24A6B42B00F641B6 /* UserNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B2B4DD24A6B42B00F641B6 /* UserNetworking.swift */; };
 		D0B2B4E024A6B48A00F641B6 /* AuthNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B2B4DF24A6B48A00F641B6 /* AuthNetworking.swift */; };
 		D0B2B4E224A6B49500F641B6 /* AuthApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B2B4E124A6B49500F641B6 /* AuthApi.swift */; };
+		D0B9180524BCB5CA00999E44 /* LikeCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B9180424BCB5CA00999E44 /* LikeCommentView.swift */; };
+		D0B9180724BCB5FC00999E44 /* LikesCommentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B9180624BCB5FC00999E44 /* LikesCommentDetailView.swift */; };
+		D0B9180924BCBC1100999E44 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B9180824BCBC1100999E44 /* CommentView.swift */; };
 		D0CA9A4624A6BEB7006B90EA /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA9A4524A6BEB7006B90EA /* UserModel.swift */; };
 		D0CA9A4824A6C01F006B90EA /* constatnts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA9A4724A6C01F006B90EA /* constatnts.swift */; };
 		D0D07DB024B1B2EA00E4DCDC /* imagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D07DAF24B1B2EA00E4DCDC /* imagePicker.swift */; };
@@ -89,6 +92,9 @@
 		D0B2B4DD24A6B42B00F641B6 /* UserNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworking.swift; sourceTree = "<group>"; };
 		D0B2B4DF24A6B48A00F641B6 /* AuthNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNetworking.swift; sourceTree = "<group>"; };
 		D0B2B4E124A6B49500F641B6 /* AuthApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthApi.swift; sourceTree = "<group>"; };
+		D0B9180424BCB5CA00999E44 /* LikeCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCommentView.swift; sourceTree = "<group>"; };
+		D0B9180624BCB5FC00999E44 /* LikesCommentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesCommentDetailView.swift; sourceTree = "<group>"; };
+		D0B9180824BCBC1100999E44 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		D0CA9A4524A6BEB7006B90EA /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		D0CA9A4724A6C01F006B90EA /* constatnts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constatnts.swift; sourceTree = "<group>"; };
 		D0D07DAF24B1B2EA00E4DCDC /* imagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imagePicker.swift; sourceTree = "<group>"; };
@@ -271,12 +277,15 @@
 			isa = PBXGroup;
 			children = (
 				D0D532A424A977530064CBF1 /* PostView.swift */,
+				D0B9180424BCB5CA00999E44 /* LikeCommentView.swift */,
+				D0B9180624BCB5FC00999E44 /* LikesCommentDetailView.swift */,
 				D00E04D124B0D0B100403532 /* TabBar.swift */,
 				D0D148E824B143F7006955AC /* signIn.swift */,
 				D007B91B24B1A18D0033A89B /* SignUpView.swift */,
 				D00C093124B402B200D6D2AE /* LoadingView.swift */,
 				D0A671B824B754D70080526A /* ProfileView.swift */,
 				D0A671BA24B75A2F0080526A /* addPostView.swift */,
+				D0B9180824BCBC1100999E44 /* CommentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -409,7 +418,9 @@
 				D03E203624A6943E00553E14 /* PostNetworking.swift in Sources */,
 				D0B2B4E224A6B49500F641B6 /* AuthApi.swift in Sources */,
 				D0B2B4DE24A6B42B00F641B6 /* UserNetworking.swift in Sources */,
+				D0B9180524BCB5CA00999E44 /* LikeCommentView.swift in Sources */,
 				D0B2B4DC24A6B41D00F641B6 /* UserApi.swift in Sources */,
+				D0B9180724BCB5FC00999E44 /* LikesCommentDetailView.swift in Sources */,
 				D0A671BB24B75A2F0080526A /* addPostView.swift in Sources */,
 				D00E04D024B0D07900403532 /* AuthObserver.swift in Sources */,
 				D00C093224B402B200D6D2AE /* LoadingView.swift in Sources */,
@@ -424,6 +435,7 @@
 				D0B2B4E024A6B48A00F641B6 /* AuthNetworking.swift in Sources */,
 				D076EF8E24A5BF1E00BC4D78 /* AppDelegate.swift in Sources */,
 				D09E2A4A24B71F0D0003B17E /* UsersSearchObserver.swift in Sources */,
+				D0B9180924BCBC1100999E44 /* CommentView.swift in Sources */,
 				D0CA9A4624A6BEB7006B90EA /* UserModel.swift in Sources */,
 				D03E203324A6910300553E14 /* CustomInterceptor.swift in Sources */,
 				D00C093024B4028B00D6D2AE /* ActivityIndicatorView.swift in Sources */,

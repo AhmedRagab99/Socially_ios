@@ -11,14 +11,16 @@ import SDWebImageSwiftUI
 import Alamofire
 
 let userPic = UserDefaults.standard.object(forKey: "userPic")
- let userId = UserDefaults.standard.object(forKey: "userId")
+let userId = UserDefaults.standard.object(forKey: "userId")
 //let userName = UserDefaults.standard.object(forKey: "userName")
 //let userFollowers = UserDefaults.standard.object(forKey: "userId")
- 
- 
+
+
 struct PostView: View {
     @State private var show = false
+     @State private var enlargeImage = false
     @State private var showPosts = false
+    @State private var showComments = false
     @State private var text = ""
     @State private var pic = ""
     @State fileprivate var showAlert = false
@@ -30,13 +32,12 @@ struct PostView: View {
     @EnvironmentObject var userState : AuthObserver
     @ObservedObject var keyboardResponder = KeyboardResponder()
     
- 
     
     var body: some View {
         
         NavigationView{
             ZStack {
-              
+                
                 if self.observer.isLoading == true{
                     VStack{
                         LoadingView(isLoading:self.observer.isLoading,retryAction: nil)
@@ -64,16 +65,20 @@ struct PostView: View {
                                 AnimatedImage(url: URL(string: item.pic ?? ""))
                                     .resizable()
                                     .aspectRatio(contentMode: self.show ? .fit: .fill)
+                                    .onTapGesture {
+                                        self.enlargeImage.toggle()
+                                }
+                                
                                 
                             }
                             
-                            LikeCommentView(userId: userId as! String, observer: self.observer, item: item)
+                            LikeCommentView(commentViewState: self.showComments, userId: userId as! String, observer: self.observer, item: item)
                                 .frame(maxHeight:40)
                                 .padding(.bottom,8)
                             
                             
                             
-                            LikesCommentDetailView(item: item)
+                            LikesCommentDetailView(item: item, observer: self.observer, commentViewState: self.showComments)
                                 .padding([.bottom])
                             
                             HStack(alignment: .bottom) {
@@ -88,9 +93,9 @@ struct PostView: View {
                         .padding(.vertical)
                         
                     }
-                    
-              
-                                       
+                        
+                        
+                        
                         
                     .alert(isPresented:$show) { () -> Alert in
                         Alert(title: Text("Login Error"), message: Text("\(self.observer.error)"), primaryButton: .default(Text("Okay"), action: {
@@ -99,66 +104,75 @@ struct PostView: View {
                     }
                 } else {
                     Text("Empty View")
-                  
-                    
                 }
-            }
-            
-                .navigationBarItems(leading:
-                                                       
-                                                       Button(action: {
-                                                           helper.deleteApiToken()
-                                                           helper.goSignIn()
-                                                       }) {
-                                                           Text("logout")
-                                                               .font(.headline)
-                                                               .foregroundColor(.green)
-                                                       }
-                                                       ,trailing:
-                                                       HStack(spacing:15) {
-                                                           
-                                                           AnimatedImage(url:URL(string: userPic as? String ?? ""))
-                                                               .resizable()
-                                                               .clipShape(Circle())
-                                                               .frame(width: 40, height: 40)
-                                                           
-                                                           Button(action: {helper.goHome()}) {
-                                                                                 Image(systemName:"arrow.2.squarepath")
-                                                                                     .foregroundColor(Color.primary)
-                                                                                     .imageScale(.large)
-                                                                             }
-                                                           
-                                                           
-                                                        
-                                                           
-                                                       }
-                                                   )
-                                                       .navigationBarTitle(
-                                                           Text("Following")
-                                                               .font(.title)
-                                                               .foregroundColor(Color.primary.opacity(0.82))
-                                                   )
-  
                 
-                .onAppear(
-                    perform: self.observer.getFollowingPosts
+            }
+            .onAppear(
+                perform: self.observer.getFollowingPosts
             )
-        }
+                .onTapGesture {
+                    
+            }
+                
+                
+                .navigationBarItems(leading:
+                    
+                    Button(action: {
+                        helper.deleteApiToken()
+                        helper.goSignIn()
+                    }) {
+                        Text("logout")
+                            .font(.headline)
+                            .foregroundColor(.green)
+                    }
+                    ,trailing:
+                    HStack(spacing:15) {
+                        
+                        AnimatedImage(url:URL(string: userPic as? String ?? ""))
+                            .resizable()
+                            .clipShape(Circle())
+                            .frame(width: 40, height: 40)
+                        
+                        Button(action: {
+                         
+                             helper.goHome()
+                     
+                            
+                        }) {
+                            Image(systemName:"arrow.2.squarepath")
+                                .foregroundColor(Color.primary)
+                                .imageScale(.large)
+                        }
+                        
+                        
+                        
+                        
+                    }
+            )
+                .navigationBarTitle(
+                    Text("Following")
+                        .font(.title)
+                        .foregroundColor(Color.primary.opacity(0.82))
+            )
             
-//
-//        .sheet(isPresented: $showPosts, onDismiss: {
-//            self.showPosts = false
-//        }, content: {
-//            addPostView(observer: self.observer, showImagePicker: self.showImagePicker, text: self.text, showAlert: self.showAlert, showPosts: self.showPosts, pic: self.pic, show: self.show)
-//                .offset(y: -self.keyboardResponder.currentHeight*0.2)
-//                .padding()
-//                .frame(height: 800)
-//
-//        })
+            
+            
+        }
+        
+        //
+        //        .sheet(isPresented: $showPosts, onDismiss: {
+        //            self.showPosts = false
+        //        }, content: {
+        //            addPostView(observer: self.observer, showImagePicker: self.showImagePicker, text: self.text, showAlert: self.showAlert, showPosts: self.showPosts, pic: self.pic, show: self.show)
+        //                .offset(y: -self.keyboardResponder.currentHeight*0.2)
+        //                .padding()
+        //                .frame(height: 800)
+        //
+        //        })
         
         
         
-    
+        
     }
     
     
@@ -226,136 +240,5 @@ struct PostHeaderView: View {
     }
 }
 
-struct LikeCommentView: View {
-    @State var likeState = false
-    @State var commentState = false
-    @State var likeimageName = "heart"
-    var userId:String
-    @State var commentimageName = "heart"
-    var observer:PostsObserver
-    var item:Post
-    @State var Imagecolor = Color.primary
-    
-    
-    var body: some View {
-        
-        HStack {
-            HStack(spacing:16){
-                
-                Image(systemName:likeimageName)
-                    .padding(.leading,3)
-                    .foregroundColor(Imagecolor)
-                    
-                    .onTapGesture {
-                        self.likeState.toggle()
-                        
-                        if self.likeState == true {
-                            self.likeimageName = "heart.fill"
-                            self.observer.likePost(postId: self.item.id! )
-                            self.Imagecolor = Color.red
-                            
-                        }else{
-                            self.likeimageName = "heart"
-                            self.observer.unlikePost(postId: self.item.id!)
-                            self.likeState.toggle()
-                            self.Imagecolor = Color.primary
 
-                        }
-                }
-                .onAppear{
-                    if (self.item.likes?.contains(self.userId))!{
-                        self.likeimageName = "heart.fill"
-                        self.Imagecolor = Color.red
-                        self.likeState = true
-                    }
-                }
-                
-                
-                
-                
-                
-                Image(systemName:"bubble.left")
-                    .foregroundColor(commentState ? Color.red : Color.primary)
-                    .onTapGesture {
-                        self.commentState.toggle()
-                        
-                }
-                
-                
-                
-                Image(systemName:"paperplane")
-                    
-                    .foregroundColor(.primary)
-                
-                
-                
-                
-                
-                Spacer()
-                
-                Image(systemName:"bookmark")
-                    
-                    .padding(.trailing,8)
-                    .scaledToFill()
-                    .foregroundColor(.primary)
-                
-            }
-        }
-        
-        
-    }
-}
-
-struct LikesCommentDetailView: View {
-    let item:Post
-    
-    var body: some View {
-        VStack(alignment:.leading){
-            HStack(alignment: .center, spacing: 0){
-                
-                if (item.likes?.count != 0){
-                    ZStack(alignment: .leading){
-                        
-                        AnimatedImage(url: URL(string: item.user?.pic ?? ""))
-                            .resizable()
-                            .clipShape(Circle())
-                            .frame(width: 30, height: 30, alignment: .topLeading)
-                        
-                        if item.likes?.count ?? 0 > 1{
-                            ZStack(alignment: .leading){
-                                Image("test")
-                                    .resizable()
-                                    .clipShape(Circle())
-                                    .frame(width:30 , height: 30, alignment: .topTrailing)
-                            }
-                            .frame(width: 34, height: 34)
-                            .padding(.horizontal,10)
-                        }
-                    }
-                    
-                    
-                    Button(action: {}) {
-                        Text("liked by \(item.likes?.count ?? 0) users")
-                    }
-                    .foregroundColor(.secondary)
-                    
-                    Spacer()
-                }
-            }
-            
-            
-            
-            
-            
-            if item.comments?.count != 0 {
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
-                    Text("View all \(item.comments?.count ?? 0)  comments")
-                }
-                .padding(.horizontal)
-                .foregroundColor(.secondary)
-                
-            }
-        }
-    }
-}
 

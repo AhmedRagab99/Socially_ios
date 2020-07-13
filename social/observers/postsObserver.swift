@@ -17,6 +17,7 @@ class PostsObserver:ObservableObject{
     @Published var postData = Post()
     @Published var likePostData = Post()
     @Published var unlikePostData = Post()
+       @Published var commentPost = Post()
 
     @Published var message = Message()
     
@@ -52,6 +53,8 @@ class PostsObserver:ObservableObject{
         }
     }
     
+    
+ 
     
     func deletePost(postId:String){
         PostApi.shared.deletePost(postId: postId) { (result) in
@@ -184,6 +187,56 @@ class PostsObserver:ObservableObject{
                       }
                   }
        }
+    
+    func comment(text:String,postId:String){
+         PostApi.shared.comment(text: text, postId:postId) { (result) in
+             self.isLoading = true
+             switch result{
+                 
+             case .success(let responce):
+                 guard let data = responce else {return}
+                 DispatchQueue.main.async {
+                     self.commentPost = data
+                     self.isLoading.toggle()
+                    print(self.commentPost)
+                    print (responce)
+                 }
+             case .failure(let error):
+                 self.isError.toggle()
+                 self.isLoading=false
+                 self.error = error.localizedDescription
+                 print(error.localizedDescription)
+                 print(error)
+             }
+         }
+     }
+    
+    
+    func uncomment(text:String,postId:String){
+        PostApi.shared.uncomment(text: text, postId:postId) { (result) in
+            self.isLoading = true
+            switch result{
+                
+            case .success(let responce):
+                guard let data = responce else {return}
+                DispatchQueue.main.async {
+                    self.commentPost = data
+                    self.isLoading.toggle()
+                   print(self.commentPost)
+                   print (responce)
+                }
+            case .failure(let error):
+                self.isError.toggle()
+                self.isLoading=false
+                self.error = error.localizedDescription
+                print(error.localizedDescription)
+                print(error)
+            }
+        }
+    }
+ 
+    
+    
     
     
 }

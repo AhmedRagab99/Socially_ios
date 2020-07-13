@@ -54,7 +54,7 @@ struct ContentView: View {
             
             VStack{
                 Button(action: {
-                    self.comment(text: "this is one", postId: "5ef1740e7935bd16c7f5e60e")
+//                    self.comment(text: "this is one", postId: "5ef1740e7935bd16c7f5e60e")
                     
                 }) {
                     Text("comment Posts")
@@ -203,17 +203,7 @@ struct ContentView: View {
         }
     }
     
-    func comment(text:String,postId:String){
-        PostApi.shared.comment(text: text, postId:postId) { (result) in
-            switch result{
-                
-            case .success(let r):
-                print(r)
-            case .failure(let err):
-                print(err)
-            }
-        }
-    }
+    
     func uncomment(text:String,postId:String){
         PostApi.shared.uncomment(text: text, postId:postId) { (result) in
             switch result{
