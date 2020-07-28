@@ -20,14 +20,14 @@ class helper:NSObject{
     
     class func goHome() {
         if let window = UIApplication.shared.windows.first {
-            window.rootViewController = UIHostingController(rootView: TabBar().animation(.easeInOut(duration: 0.7)))
+            window.rootViewController = UIHostingController(rootView: TabBar())
             window.makeKeyAndVisible()
         }
     }
     
     class func goSignIn() {
         if let window = UIApplication.shared.windows.first {
-            window.rootViewController = UIHostingController(rootView: LoginView().animation(.easeInOut(duration: 0.7)))
+            window.rootViewController = UIHostingController(rootView: LoginView())
             window.makeKeyAndVisible()
         }
     }

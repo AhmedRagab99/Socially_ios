@@ -57,6 +57,7 @@ class AuthObserver:ObservableObject{
                     UserDefaults.standard.setValue(data.user?.name, forKeyPath: "userName")
                 UserDefaults.standard.setValue(data.user?.followers, forKeyPath: "followers")
                    UserDefaults.standard.setValue(data.user?.following, forKeyPath: "following")
+                UserDefaults.standard.setValue(data.user?.pio, forKeyPath: "pio")
                 
                 self.signInPuplisher = data
                 

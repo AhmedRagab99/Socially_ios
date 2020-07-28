@@ -8,7 +8,6 @@
 
 import SwiftUI
 import Alamofire
-import UIKit
 
 struct SignUpView: View {
     
@@ -44,7 +43,7 @@ struct SignUpView: View {
                                 .resizable()
                                 .frame(width: 250, height: 250)
                                 .clipShape(Circle())
-                                .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                                .overlay(Circle().stroke(Color.secondary, lineWidth: 4))
                                 .shadow(radius: 10.0, x: 20, y: 10)
                                 .padding(.bottom, 50)
                                 .onTapGesture {
@@ -243,6 +242,8 @@ struct SignUpView: View {
 
 struct SignUp_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView()
+        Group {
+            SignUpView()
+        }
     }
 }

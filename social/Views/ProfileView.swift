@@ -11,96 +11,96 @@ import SDWebImageSwiftUI
 import Alamofire
 
 struct ProfileView: View {
-    @State private var show = false
-    @State private var showPosts = false
-    @State private var text = ""
-    @State  var commentViewState = false
-    @State private var pic = ""
-    @State fileprivate var showAlert = false
-    @State var showImagePicker: Bool = false
-    @State var pickerImage: UIImage? = nil
+    @State private var favoriteColor = 0
+    var colors = ["Red", "Green", "Blue"]
     
-    @ObservedObject  var observer = PostsObserver()
-    @ObservedObject  var Authobserver = AuthObserver()
-    @EnvironmentObject var userState : AuthObserver
-    @ObservedObject var keyboardResponder = KeyboardResponder()
-    
-    let userPic = UserDefaults.standard.object(forKey: "userPic")
-    let userId = UserDefaults.standard.object(forKey: "userId")
-    
+    @State var listView = false
+    @State var gridView = false
+    @State var complexGrid = false
     
     
     var body: some View {
-        
-        
-        
-        ScrollView(.vertical,showsIndicators:false){
-            
-            
-            VStack(alignment:.leading,spacing:5){
-                HStack{
-                    //Image("test")
+        ScrollView{
+            VStack{
+                ProfileHeaderView()
+                    .padding()
+                HStack(spacing:20){
                     
-                    AnimatedImage(url: URL(string: userPic  as! String))
-                        .resizable()
-                        .clipShape(Circle())
-                        .frame(width: 100, height: 100, alignment: .leading)
-                    Spacer()
                     
-                    VStack{
-                        Text("12")
-                        Text("Posts")
+                    VStack {
+                        
+                        Image(systemName: "heart.fill")
+                            .imageScale(.large)
+                            .foregroundColor(.gray)
+                        
+                        
                     }
-                    Spacer()
-                    VStack{
-                        Text("12")
-                        Text("Posts")
+                    .frame(width: 100, height: 40, alignment: .center)
+                    .background(gridView ? Color.blue: Color.white  )                .cornerRadius(10)
+                    .onTapGesture {
+                        gridView.toggle()
+                        listView = false
+                        complexGrid = false
                     }
-                    Spacer()
-                    VStack{
-                        Text("12")
-                        Text("Posts")
+                    
+                    
+                    VStack {
+                        Image(systemName: "heart.fill")
+                            .imageScale(.large)
+                            .foregroundColor(.gray)
+                        
                     }
-                    Spacer()
+                    .frame(width: 100, height: 40, alignment: .center)
+                    .background(listView ? Color.blue: Color.white  )                .cornerRadius(10)
+                    .onTapGesture {
+                        gridView = false
+                        listView .toggle()
+                        complexGrid = false
+                    }
+                    
+                    
+                    VStack {
+                        Image(systemName: "heart.fill")
+                            .imageScale(.large)
+                            .foregroundColor(.gray)
+                        
+                        
+                    }
+                    .frame(width: 100, height: 40, alignment: .center)
+                    .background(complexGrid ? Color.blue: Color.white  )
+                    .cornerRadius(10)
+                    .onTapGesture {
+                        gridView  = false
+                        listView = false
+                        complexGrid .toggle()
+                    }
+                    
+                    
+                    
                 }
                 .padding(.horizontal)
+                .padding(.vertical)
+                .background(Color.secondary.opacity(0.08))
+                .cornerRadius(15)
                 
-                Text("Ahmed Ragab")
-                    .font(.largeTitle)
-                    .padding()
                 
-                Spacer()
-                ScrollView(.horizontal,showsIndicators: false){
-                    HStack{
-                        ForEach(observer.postObserver){ item in
-                            
-                            //Image("test")
-                            if item.pic != "no photo"{
-                                AnimatedImage(url: URL(string: item.pic ?? ""))
-                                    .resizable()
-                                    .clipShape(Circle())
-                                    .frame(width: 80, height: 80)
-                            }
-                            
-                            
-                        }
-                    }
+                ForEach(0 ..< 5) { item in
+                    Image("test")
+                        .resizable()
+                        .clipShape(Rectangle())
+                        .cornerRadius(20)
+                        .padding()
                 }
-                .padding(.leading)
-                
-                Spacer()
             }
             
+            
+            
+            Spacer()
         }
-        .onAppear(
-                perform: self.observer.getMyPosts
-            )
-    
+        .clipShape(Rectangle())
+        .cornerRadius(20)
     }
 }
-
-
-
 
 
 
@@ -108,5 +108,6 @@ struct ProfileView: View {
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView()
+        
     }
 }

@@ -35,7 +35,7 @@ struct addPostView: View {
                                    .resizable()
                                    .frame(width: 350, height: 350)
                                    .clipShape(Rectangle())
-                                   .overlay(Rectangle().stroke(Color.white, lineWidth: 4))
+                                .overlay(Rectangle().stroke(Color.primary.opacity(0.4), lineWidth: 4))
                                    .shadow(radius: 10.0, x: 20, y: 10)
                                    .padding(.bottom, 50)
                                    .cornerRadius(10)
@@ -98,7 +98,7 @@ struct addPostView: View {
                        }
             }
         }
-    .padding()
+        .padding()
               
                
            }

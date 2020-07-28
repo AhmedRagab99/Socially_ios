@@ -12,55 +12,182 @@ import SDWebImageSwiftUI
 struct TabBar: View {
     
     var body: some View {
-      
-            TabView {
+        
+        
+        TabView {
+            
+            NavigationView{
+                PostView()
+                    .navigationBarTitle("Following")
                     
-                        PostView()
-                            .tabItem {
-                                Image(systemName: "square.and.pencil")
-                                   .imageScale(.large)
-                                Text("posts")
-                        }
-                        
-                        PostView()
-                            .tabItem {
-                                Image(systemName: "magnifyingglass")
-                                   .imageScale(.large)
-                                Text("search")
-                        }
-                        
-                        addPostView()
-                            .tabItem {
-                                Image(systemName: "plus.app.fill")
-                                    .imageScale(.large)
-                                Text("Camera")
-                                    .bold()
-                                    .font(.largeTitle)
-                        }
-                        
-                        PostView()
-                            .tabItem {
-                                Image(systemName: "heart.fill")
-                                   .imageScale(.large)
-                                Text("favorites")
-                        }
-                        
-                        
-                            ProfileView()
-                                .tabItem {
-                                    Image(systemName: "person.fill")
-                                       .imageScale(.large)
-                                    Text("profile")
-                            }
-                        
-                        
-                    }
-            .accentColor(Color.green.opacity(0.7))
-          
+                    .navigationBarItems(leading:
+                                            
+                                            Button(action: {
+                                                helper.deleteApiToken()
+                                                helper.goSignIn()
+                                            }) {
+                                                Text("logout")
+                                                    .font(.headline)
+                                                    .foregroundColor(.green)
+                                            }
+                                        ,trailing:
+                                            HStack(spacing:15) {
+                                                
+                                                AnimatedImage(url:URL(string: userPic as? String ?? ""))
+                                                    .resizable()
+                                                    .clipShape(Circle())
+                                                    .frame(width: 40, height: 40)
+                                                
+                                                Button(action: {
+                                                    
+                                                    helper.goHome()
+                                                    
+                                                    
+                                                }) {
+                                                    Image(systemName:"arrow.2.squarepath")
+                                                        .foregroundColor(Color.primary)
+                                                        .imageScale(.large)
+                                                }
+                                                
+                                                
+                                                
+                                                
+                                            }
+                    )
+            }
+            .tabItem {
+                Image(systemName: "square.and.pencil")
+                    .imageScale(.large)
+                Text("posts")
+            }
+            
+            
+         
+                UsersSearch()
+        
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
+                        .imageScale(.large)
+                    Text("search")
+            }
+            
+            
+            
+            
+            NavigationView{
+                addPostView()
+                    
+                    
+                    .navigationBarItems(leading:
+                                            
+                                            Button(action: {
+                                                helper.deleteApiToken()
+                                                helper.goSignIn()
+                                            }) {
+                                                Text("logout")
+                                                    .font(.headline)
+                                                    .foregroundColor(.green)
+                                            }
+                                        ,trailing:
+                                            HStack(spacing:15) {
+                                                
+                                                AnimatedImage(url:URL(string: userPic as? String ?? ""))
+                                                    .resizable()
+                                                    .clipShape(Circle())
+                                                    .frame(width: 40, height: 40)
+                                                
+                                                Button(action: {
+                                                    
+                                                    helper.goHome()
+                                                    
+                                                    
+                                                }) {
+                                                    Image(systemName:"arrow.2.squarepath")
+                                                        .foregroundColor(Color.primary)
+                                                        .imageScale(.large)
+                                                }
+                                                
+                                                
+                                                
+                                                
+                                            }
+                    )
+            }
+            .tabItem {
+                Image(systemName: "plus.app.fill")
+                    .imageScale(.large)
+                Text("Camera")
+                    .bold()
+                    .font(.largeTitle)
+            }
+            
+            NavigationView{
+                
+                PostView()
+                  
+                    .navigationBarTitle("Following")
+
+                    
+                    .navigationBarItems(leading:
+                                            
+                                            Button(action: {
+                                                helper.deleteApiToken()
+                                                helper.goSignIn()
+                                            }) {
+                                                Text("logout")
+                                                    .font(.headline)
+                                                    .foregroundColor(.green)
+                                            }
+                                        ,trailing:
+                                            HStack(spacing:15) {
+                                                
+                                                AnimatedImage(url:URL(string: userPic as? String ?? ""))
+                                                    .resizable()
+                                                    .clipShape(Circle())
+                                                    .frame(width: 40, height: 40)
+                                                
+                                                Button(action: {
+                                                    
+                                                    helper.goHome()
+                                                    
+                                                    
+                                                }) {
+                                                    Image(systemName:"arrow.2.squarepath")
+                                                        .foregroundColor(Color.primary)
+                                                        .imageScale(.large)
+                                                }
+                                                
+                                                
+                                                
+                                                
+                                            }
+                    )
+            }
+            .tabItem {
+                Image(systemName: "heart.fill")
+                    .imageScale(.large)
+                Text("favorites")
+            }
+            
+
+            NavigationView {
+                ProfileView()
+                    .navigationTitle("Profile")
+            }
+                .tabItem {
+                    Image(systemName: "person.fill")
+                        .imageScale(.large)
+                    Text("profile")
+            }
+            
+            
+            
         }
         
-        }
+    }
     
+}
+
 
 
 struct TabBar_Previews: PreviewProvider {

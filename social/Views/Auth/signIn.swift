@@ -52,7 +52,7 @@ struct LoginView: View {
                                 .frame(width: 44, height: 44)
                                 .background(Color.white)
                                 .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                                .shadow(color: Color.black.opacity(0.15), radius: 5, x: 0, y: 5)
+                                .shadow(color: Color.primary.opacity(0.15), radius: 5, x: 0, y: 5)
                                 .padding(.leading)
                             
                             TextField("Your Email".uppercased(), text: $email)
@@ -157,6 +157,7 @@ struct LoginView: View {
 struct signIn_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
+            .preferredColorScheme(.light)
         
         
         

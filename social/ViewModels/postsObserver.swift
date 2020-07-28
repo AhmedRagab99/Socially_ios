@@ -199,7 +199,7 @@ class PostsObserver:ObservableObject{
                      self.commentPost = data
                      self.isLoading.toggle()
                     print(self.commentPost)
-                    print (responce)
+                    print (responce.debugDescription)
                  }
              case .failure(let error):
                  self.isError.toggle()
@@ -223,7 +223,7 @@ class PostsObserver:ObservableObject{
                     self.commentPost = data
                     self.isLoading.toggle()
                    print(self.commentPost)
-                   print (responce)
+                    print (responce.debugDescription)
                 }
             case .failure(let error):
                 self.isError.toggle()
