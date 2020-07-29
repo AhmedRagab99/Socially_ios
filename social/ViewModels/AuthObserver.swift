@@ -52,16 +52,18 @@ class AuthObserver:ObservableObject{
                 
                 helper.saveApiToken(token: token)
                 
-                UserDefaults.standard.setValue(data.user?.pic, forKeyPath: "userPic")
-                 UserDefaults.standard.setValue(data.user?.id, forKeyPath: "userId")
+                  UserDefaults.standard.setValue(data.user?.pic, forKeyPath: "userPic")
+                   UserDefaults.standard.setValue(data.user?.id, forKeyPath: "userId")
                     UserDefaults.standard.setValue(data.user?.name, forKeyPath: "userName")
-                UserDefaults.standard.setValue(data.user?.followers, forKeyPath: "followers")
-                   UserDefaults.standard.setValue(data.user?.following, forKeyPath: "following")
-                UserDefaults.standard.setValue(data.user?.pio, forKeyPath: "pio")
+                UserDefaults.standard.setValue(data.user?.followers?.count, forKeyPath: "followers")
+                UserDefaults.standard.setValue(data.user?.following?.count, forKeyPath: "following")
+                 UserDefaults.standard.setValue(data.user?.pio, forKeyPath: "pio")
                 
                 self.signInPuplisher = data
                 
+                DispatchQueue.main.asyncAfter(deadline: .now()+2){
                 helper.goHome()
+                }
                 
             case .failure(let error):
                 self.isError.toggle()

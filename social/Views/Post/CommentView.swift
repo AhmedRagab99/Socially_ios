@@ -105,7 +105,7 @@ struct CommentsView:View {
                                 Text("Send")
                                     .foregroundColor(Color.blue)
                                     .onTapGesture {
-                                        print(self.item.id)
+                                       // print(self.item.id)
                                         self.observer.comment(text: self.comment, postId: self.item.id ?? "")
                                         self.presentationMode.wrappedValue.dismiss()
                                        // helper.goHome()

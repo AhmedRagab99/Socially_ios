@@ -13,6 +13,7 @@ struct UsersSearch: View {
     @ObservedObject var UserViewModel = UserObserver()
     @State var showUser = false
    
+    @State var  userId = ""
     private var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     @State var searchTerm = ""
     var body: some View {
@@ -33,6 +34,8 @@ struct UsersSearch: View {
                                     .resizable()
                                     .clipShape(Circle())
                                     .frame(width: 80, height: 80, alignment: .center)
+                                
+                           
 
                                 Text(item.email ?? "UserName")
                                     .font(.subheadline)
@@ -41,6 +44,8 @@ struct UsersSearch: View {
                             }
                             .onTapGesture {
                                 showUser.toggle()
+                              //  userId = item.id ?? ""
+                             
                             }
                         }
                       }
@@ -57,7 +62,7 @@ struct UsersSearch: View {
             .sheet(isPresented: $showUser, onDismiss: {
                 showUser = false
                                       }, content: {
-                                      ProfileView()
+                                       // ProfileView(userId: userId)
                                   })
         }
         

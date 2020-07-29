@@ -12,6 +12,7 @@ import Alamofire
 
 class UserObserver:ObservableObject{
     @Published var allUser = [User]()
+    @Published var singleUserData = ProfileModel()
     
     
     @Published var isError = false
@@ -20,6 +21,29 @@ class UserObserver:ObservableObject{
     
     
     
+    
+    
+    func getUser(userId:String){
+        UserApi.shared.getUser(userId: userId) { (result) in
+            self.isLoading = true
+            switch result{
+            case .success(let responce):
+                guard let data = responce else {return}
+            
+                DispatchQueue.main.async {
+                    
+                
+                    self.singleUserData = data
+                    self.isLoading.toggle()
+                }
+                
+            case .failure(let error):
+                self.isError.toggle()
+                self.isLoading=false
+                self.error = error.localizedDescription
+            }
+        }
+    }
     
     func getAllUsers(){
         UserApi.shared.allUsers { (result) in

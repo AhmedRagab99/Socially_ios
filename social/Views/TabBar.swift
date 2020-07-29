@@ -63,13 +63,16 @@ struct TabBar: View {
             
             
          
+            NavigationView {
                 UsersSearch()
-        
-                .tabItem {
-                    Image(systemName: "magnifyingglass")
-                        .imageScale(.large)
-                    Text("search")
+                    .navigationTitle("Search")
             }
+            
+                    .tabItem {
+                        Image(systemName: "magnifyingglass")
+                            .imageScale(.large)
+                        Text("search")
+                }
             
             
             
@@ -170,15 +173,17 @@ struct TabBar: View {
             }
             
 
+    
             NavigationView {
                 ProfileView()
                     .navigationTitle("Profile")
+          
             }
-                .tabItem {
-                    Image(systemName: "person.fill")
-                        .imageScale(.large)
-                    Text("profile")
-            }
+            .tabItem {
+                Image(systemName: "person.fill")
+                    .imageScale(.large)
+                Text("profile")
+        }
             
             
             

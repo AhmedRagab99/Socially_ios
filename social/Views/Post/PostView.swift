@@ -10,9 +10,6 @@ import SwiftUI
 import SDWebImageSwiftUI
 import Alamofire
 
-let userPic = UserDefaults.standard.object(forKey: "userPic")
-let userId = UserDefaults.standard.object(forKey: "userId")
-let userPio = UserDefaults.standard.object(forKey: "pio")
 
 
 struct PostView: View {
@@ -73,6 +70,9 @@ struct PostView: View {
                                     .foregroundColor(.secondary)
                             }
                             .padding(.bottom)
+                            
+                            
+                           
                         }
                         .padding(.vertical)
 

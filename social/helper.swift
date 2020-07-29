@@ -8,6 +8,16 @@
 
 import SwiftUI
 
+
+
+let userPic = UserDefaults.standard.object(forKey: "userPic")
+let userId = UserDefaults.standard.object(forKey: "userId")
+let userPio = UserDefaults.standard.object(forKey: "pio")
+let userName = UserDefaults.standard.object(forKey: "userName")
+let userFollowers = UserDefaults.standard.object(forKey: "followers")
+let userFollowing = UserDefaults.standard.object(forKey: "following")
+
+
 class helper:NSObject{
     
     
@@ -22,6 +32,7 @@ class helper:NSObject{
         if let window = UIApplication.shared.windows.first {
             window.rootViewController = UIHostingController(rootView: TabBar())
             window.makeKeyAndVisible()
+            
         }
     }
     
@@ -58,7 +69,18 @@ class helper:NSObject{
     }
     class func deleteApiToken(){
         // save api token to UserDefaults
+//        let userPic = UserDefaults.standard.object(forKey: "userPic")
+//        let userId = UserDefaults.standard.object(forKey: "userId")
+//        let userPio = UserDefaults.standard.object(forKey: "pio")
+//        let userFollowers = UserDefaults.standard.object(forKey: "followers")
+//        let userFollowing = UserDefaults.standard.object(forKey: "following")
         UserDefaults.standard.removeObject(forKey: "token")
+        UserDefaults.standard.removeObject(forKey: "userPic")
+        UserDefaults.standard.removeObject(forKey: "userId")
+        UserDefaults.standard.removeObject(forKey: "followers")
+        UserDefaults.standard.removeObject(forKey: "following")
+        UserDefaults.standard.removeObject(forKey: "pio")
+        
     }
     
     class func getApiToken() -> String? {
