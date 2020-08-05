@@ -90,7 +90,24 @@ struct PostView: View {
                         }), secondaryButton: .destructive(Text("Dismiss")))
                     }
                 } else {
-                    Text("Empty View")
+                    VStack (alignment:.center){
+                        LottieView(fileName: "Empty")
+                            .frame(width: 250, height: 250, alignment: .center)
+                        VStack {
+                            Text("NO Posts Found!")
+                                .font(.title)
+                                .foregroundColor(Color.primary)
+                            
+                           
+                            Text(showPosts ? " No Posts!! Please Add Posts" : "No Following Posts!! Please Follow Users to see Posts")
+                                    .font(.title)
+                                    .foregroundColor(Color.primary.opacity(0.6))
+                            
+                        }
+                        .padding()
+                        
+                    }
+                    
                 }
         }
 

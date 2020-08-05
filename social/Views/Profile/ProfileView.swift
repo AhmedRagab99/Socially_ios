@@ -79,7 +79,7 @@ struct ProfileView: View {
                 
                 
 
-               
+                if userViewModel.singleUserData.posts?.count ?? 0 != 0{
                 if grids {
                     ScrollView {
                                     LazyVGrid(columns: columns) {
@@ -111,13 +111,17 @@ struct ProfileView: View {
                     
                     
                 }
-                
-
-             
-                
-                    
-                 
-                  
+                } else{
+                    VStack(alignment:.center){
+                        LottieView(fileName: "Empty")
+                            .frame(width: 200, height: 200, alignment: .center)
+                            
+                        Text(" No Posts Here!! Please Add Posts ")
+                            .font(.headline)
+                    }
+                    .padding()
+                }
+    
                 }
        
             .onAppear {
@@ -127,13 +131,6 @@ struct ProfileView: View {
         
     }
 }
-
-//struct ProfileView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ProfileView( userId: userId as? String ?? "")
-//    }
-//}
-
 
 extension View {
     func Print(_ vars: Any...) -> some View {

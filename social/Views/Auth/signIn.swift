@@ -28,6 +28,7 @@ struct LoginView: View {
                 if self.Authbserver.isLoading == true{
                     VStack{
                         LoadingView(isLoading:self.Authbserver.isLoading,retryAction: nil)
+                 
                       
                     }
                 }
@@ -36,13 +37,18 @@ struct LoginView: View {
                 VStack(alignment: .center) {
                     Spacer()
                     
-                    Image("signIn")
-                        .resizable()
-                        .frame(width: 250, height: 250)
-                        .clipShape(Circle())
-                        .overlay(Circle().stroke(Color.white, lineWidth: 4))
-                        .shadow(radius: 10.0, x: 20, y: 10)
-                        .padding(.bottom, 50)
+//                    Image("signIn")
+//                        .resizable()
+//                        .frame(width: 250, height: 250)
+//                        .clipShape(Circle())
+//                        .overlay(Circle().stroke(Color.white, lineWidth: 4))
+//                        .shadow(radius: 10.0, x: 20, y: 10)
+//                        .padding(.bottom, 50)
+                    
+                    
+                    LottieView(fileName: "SignUp")
+                        //.frame(width: 200, height: 200, alignment: .center)
+                        .padding()
                     
                   
                     
@@ -114,7 +120,7 @@ struct LoginView: View {
                             .foregroundColor(.primary)
                             .padding()
                             .frame(width: 300, height: 50)
-                            .background(Color.green.opacity(0.8))
+                            .background(Color.blue.opacity(0.8))
                             .cornerRadius(20.0)
                             .shadow(radius: 5)
                     }
@@ -133,7 +139,7 @@ struct LoginView: View {
                         } ){
                             Text("Sign Up")
                                 .font(.headline)
-                                .foregroundColor(.green)
+                                .foregroundColor(Color.blue.opacity(0.9))
                                 .padding()
                         }
                         

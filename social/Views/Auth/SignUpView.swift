@@ -48,10 +48,10 @@ struct SignUpView: View {
                                 .shadow(radius: 10.0, x: 20, y: 10)
                                 .padding(.bottom, 50)
                                 .onTapGesture {
-                                    withAnimation{
-                                        self.showImagePicker.toggle()
-                                    }
-                            }
+                                    self.showImagePicker.toggle()
+                                }
+                              
+                                
                                 //5
                                 .sheet(isPresented: $showImagePicker, onDismiss: {
                                     self.showImagePicker = false
@@ -137,8 +137,9 @@ struct SignUpView: View {
                             
                             
                             
+                            
                             HStack {
-                                Image(systemName: "pencil")
+                                Image(systemName: "pencil.and.ellipsis.rectangle")
                                     .foregroundColor(Color(#colorLiteral(red: 0.6549019608, green: 0.7137254902, blue: 0.862745098, alpha: 1)))
                                     .frame(width: 44, height: 44)
                                     .background(Color.white)
@@ -146,16 +147,16 @@ struct SignUpView: View {
                                     .shadow(color: Color.black.opacity(0.15), radius: 5, x: 0, y: 5)
                                     .padding(.leading)
                                 
-                                TextField("Your Pio".uppercased(), text: $pio)
+                                SecureField("Pio".uppercased(), text: $pio)
                                     .keyboardType(.default)
                                     .font(.subheadline)
+                                    
                                     .padding(.leading)
                                     .frame(height: 44)
-                                    .onTapGesture {
-                                        
-                                    }
-                            }                        }
-                            .padding()
+                                
+                            }
+                        }
+                        .padding()
                         
                         Button(action: {
                             self.Authbserver.isLoading = true
@@ -170,7 +171,7 @@ struct SignUpView: View {
                                 .foregroundColor(.primary)
                                 .padding()
                                 .frame(width: 300, height: 50)
-                                .background(Color.green.opacity(0.8))
+                                .background(Color.blue.opacity(0.8))
                                 .cornerRadius(20.0)
                                 .shadow(radius: 5)
                         }
@@ -189,7 +190,7 @@ struct SignUpView: View {
                             } ){
                                 Text("Sign In now")
                                     .font(.headline)
-                                    .foregroundColor(.green)
+                                    .foregroundColor(.blue)
                                     .padding()
                             }
                             
