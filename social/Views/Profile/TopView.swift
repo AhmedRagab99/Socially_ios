@@ -6,7 +6,7 @@ struct TopView: View {
     var body: some View {
         HStack {
             //Image("test")
-            AnimatedImage(url:URL(string: userPic as? String ?? "test"))
+            AnimatedImage(url:URL(string: userViewModel.singleUserData.user?.pic ?? ""))
                 .resizable()
                 .clipShape(Circle())
                 .frame(width: 80, height: 80)

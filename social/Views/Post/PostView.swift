@@ -23,6 +23,7 @@ struct PostView: View {
     @State fileprivate var showAlert = false
     @State var showImagePicker: Bool = false
     @State var pickerImage: UIImage? = nil
+    @State var showMyPosts: Bool
     
     @ObservedObject  var observer = PostsObserver()
     @ObservedObject  var Authobserver = AuthObserver()
@@ -65,7 +66,7 @@ struct PostView: View {
                             HStack(alignment: .bottom) {
                                 Spacer()
                                 Text("\(item.created?.substring(toIndex: 10) ?? "")")
-                                    //                            Text("\(helper.convertDateFormatter(date: item.created. ?? " "))")
+                                  
                                     .font(.headline)
                                     .foregroundColor(.secondary)
                             }
@@ -94,14 +95,18 @@ struct PostView: View {
         }
 
         .onAppear {
+            if showMyPosts{
             observer.getFollowingPosts()
+            } else{
+                observer.getMyPosts()
+            }
         }
        
         }
     
     struct PostView_Previews: PreviewProvider {
         static var previews: some View {
-            PostView()
+            PostView(showMyPosts: false)
         }
     }
 }

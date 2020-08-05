@@ -2,6 +2,8 @@ import SwiftUI
 import SDWebImageSwiftUI
 struct CardView: View {
     var item:User
+    @ObservedObject var userViewModel:UserObserver
+    
     var body: some View {
         VStack {
            // Image("test")
@@ -24,9 +26,13 @@ struct CardView: View {
             Button(action: {
                 //
             }) {
+                
                 Text("Follow")
                     .bold()
                     .foregroundColor(.white)
+                    .onTapGesture {
+                        userViewModel.followUser(followId: item.id ?? "")
+                    }
             }
             .padding(.vertical, 8)
             .padding(.horizontal, 16)

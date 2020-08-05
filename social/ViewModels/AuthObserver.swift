@@ -74,8 +74,8 @@ class AuthObserver:ObservableObject{
         }
     }
     
-    func signUp(email:String,name:String,password:String,pic:String){
-        AuthApi.shared.signUp(email: email, name: name, picuture: pic, password: password) { [weak self] (result) in
+    func signUp(email:String,name:String,password:String,pic:String,pio:String){
+        AuthApi.shared.signUp(email: email, name: name, picuture: pic, password: password, pio: pio) { [weak self] (result) in
             guard let self = self else {return}
             self.isLoading = true
 

@@ -14,7 +14,6 @@ import SDWebImageSwiftUI
 struct LikesCommentDetailView: View {
     let item:Post
     let observer:PostsObserver
-    //@Environment(\.presentationMode) var presentationMode
 
        @State var commentViewState:Bool
     //  @State var likeViewState:Bool
@@ -22,17 +21,19 @@ struct LikesCommentDetailView: View {
         VStack(alignment:.leading){
             
             
-            HStack(spacing:2){
-                
-                Text("@\(item.user?.name ?? "") ")
-                    .font(.headline)
-                    .foregroundColor(.blue)
-                VStack {
-                    Text("\(item.text ?? "")")
+                HStack(spacing:2){
+                    
+                    Text("@\(item.user?.name ?? "") ")
                         .font(.headline)
-                        .foregroundColor(.primary)
+                        .foregroundColor(.blue)
+                    VStack {
+                        Text("\(item.text ?? "")")
+                            .font(.headline)
+                            .foregroundColor(.primary)
+                    }
                 }
-            }
+            
+            
             HStack(alignment: .center, spacing: 0){
                 
                 if (item.likes?.count != 0){

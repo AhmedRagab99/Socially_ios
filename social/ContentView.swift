@@ -78,7 +78,7 @@
 //
 //
 //                Button(action: {
-//                    self.followUser(followId:"5ef17a742f695817d3836803")
+//                   // self.followUser(followId:"5ef17a742f695817d3836803")
 //
 //                }) {
 //                    Text("follow user ")
@@ -155,17 +155,17 @@
 //            }
 //        }
 //    }
-//    func followUser(followId:String){
-//        UserApi.shared.followUser(followId: followId) { (result) in
-//            switch result{
-//
-//            case .success(let r):
-//                print(r)
-//            case .failure(let err):
-//                print(err)
-//            }
-//        }
-//    }
+////    func followUser(followId:String){
+////        UserApi.shared.followUser(followId: followId) { (result) in
+////            switch result{
+////
+////            case .success(let r):
+////                print(r)
+////            case .failure(let err):
+////                print(err)
+////            }
+////        }
+////    }
 //    func unFollowUser(unfollowId:String){
 //        UserApi.shared.unFollowUser(unfollowId: unfollowId) { (result) in
 //            switch result{
@@ -304,8 +304,8 @@
 //
 //
 //
-//    func signUp(email:String,name:String,password:String,pic:String){
-//        AuthApi.shared.signUp(email: email, name: name, picuture: pic, password: password) { (result) in
+//    func signUp(email:String,name:String,password:String,pic:String,pio:String){
+//        AuthApi.shared.signUp(email: email, name: name, picuture: pic, password: password, pio: pio) { (result) in
 //            switch result{
 //
 //            case .success(let responce):

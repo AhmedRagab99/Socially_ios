@@ -17,6 +17,7 @@ struct SignUpView: View {
     @State private var email = ""
     @State private var password = ""
     @State private var name = ""
+    @State private var pio = ""
     var link = ""
     @State private var pic = ""
     @State private var showAlert = false
@@ -130,8 +131,31 @@ struct SignUpView: View {
                                     .frame(height: 44)
                                 
                             }
-                        }
-                        .padding()
+                            
+                            
+                            Divider().padding(.leading, 80)
+                            
+                            
+                            
+                            HStack {
+                                Image(systemName: "pencil")
+                                    .foregroundColor(Color(#colorLiteral(red: 0.6549019608, green: 0.7137254902, blue: 0.862745098, alpha: 1)))
+                                    .frame(width: 44, height: 44)
+                                    .background(Color.white)
+                                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                                    .shadow(color: Color.black.opacity(0.15), radius: 5, x: 0, y: 5)
+                                    .padding(.leading)
+                                
+                                TextField("Your Pio".uppercased(), text: $pio)
+                                    .keyboardType(.default)
+                                    .font(.subheadline)
+                                    .padding(.leading)
+                                    .frame(height: 44)
+                                    .onTapGesture {
+                                        
+                                    }
+                            }                        }
+                            .padding()
                         
                         Button(action: {
                             self.Authbserver.isLoading = true
@@ -213,7 +237,7 @@ struct SignUpView: View {
                             self.pic = dataJson["link"] as! String
                             print(self.pic)
                             
-                            self.Authbserver.signUp(email: self.email, name: self.name, password: self.password, pic: self.pic)
+                            self.Authbserver.signUp(email: self.email, name: self.name, password: self.password, pic: self.pic, pio: pio)
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                 print(self.Authbserver.isSignUn)
                                 

@@ -21,8 +21,9 @@ struct PostHeaderView: View {
             HStack(){
                 AnimatedImage(url: URL(string: post.user?.pic ?? ""))
                     .resizable()
+                    .frame(maxWidth: 40, maxHeight: 40, alignment: .leading)
+                    
                     .clipShape(Circle())
-                    .frame(maxWidth: 50, maxHeight: 40, alignment: .leading)
                 
                 
                 Text("\(post.user?.name ?? "")")

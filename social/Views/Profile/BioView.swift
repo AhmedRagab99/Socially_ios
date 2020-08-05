@@ -7,7 +7,11 @@ struct BioView: View {
         HStack {
             VStack(alignment: .leading) {
 
-             Spacer()
+               
+             
+                Text("\(userViewModel.singleUserData.user?.name ?? " ")")
+                    .font(.title)
+                    
                 Text("Bio :")
                     .foregroundColor(Color.blue)
                     .font(.subheadline)

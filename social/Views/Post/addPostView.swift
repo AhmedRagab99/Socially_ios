@@ -11,17 +11,19 @@ import Alamofire
 
 struct addPostView: View {
     @State private var show = false
-            @State private var showPosts = false
-            @State private var text = ""
-            @State private var pic = ""
-            @State fileprivate var showAlert = false
-            @State var showImagePicker: Bool = false
-            @State var pickerImage: UIImage? = nil
-            var observer = PostsObserver()
-            @Environment(\.presentationMode) var presentationMode
+    @State private var showPosts = false
+    @State private var text = ""
+    @State private var pic = ""
+    @State fileprivate var showAlert = false
+    @State var showImagePicker: Bool = false
+    @State var pickerImage: UIImage? = nil
+    @ObservedObject var keyboardResponder = KeyboardResponder()
+    
+    var observer = PostsObserver()
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-       
+        
         VStack {
             ZStack{
                        if self.observer.isLoading == true{
@@ -97,7 +99,9 @@ struct addPostView: View {
                            
                        }
             }
+            .offset(y: -keyboardResponder.currentHeight*0.6)
         }
+       
         .padding()
               
                

@@ -1,5 +1,8 @@
 import SwiftUI
 import SDWebImageSwiftUI
+
+
+
 struct ProfileView: View {
     
     @ObservedObject  var userViewModel = UserObserver()
@@ -7,6 +10,9 @@ struct ProfileView: View {
     @State var grids = true
     @State var anotherView = false
     var columns : [GridItem] = [.init(.flexible()),.init(.flexible()),.init(.flexible())]
+    @State var  ProfileUserId : String
+    @State var showSheet = false
+    @State var isFollowing = false
     
     
     var body: some View {
@@ -15,10 +21,26 @@ struct ProfileView: View {
             ScrollView(.vertical) {
                   
                     TopView(userViewModel: userViewModel)
+                
+   
+                if let f = userViewModel.singleUserData.user?.followers {
+                    //Print(f,ProfileUserId,userId as! String )
+                    
+                    if f.contains("\(userId as! String)") {
+                       // debugPrint(f)
+                        EditButtonView(UserViewModel:userViewModel,userId:ProfileUserId,show:true)
+                    .padding()
+                    } else{
+                        EditButtonView(UserViewModel:userViewModel,userId:ProfileUserId,show:false)
+                    }
+                }
+        
+           
+               
                     BioView(userViewModel: userViewModel)
                         .frame( maxHeight: 150)
                         .padding([.trailing,.leading])
-                    CompleteYourProfileView(userViewModel: userViewModel)
+                CompleteYourProfileView(userViewModel: userViewModel,showSheet:showSheet)
                         
 
                 HStack {
@@ -99,15 +121,23 @@ struct ProfileView: View {
                 }
        
             .onAppear {
-                userViewModel.getUser(userId: userId as? String ?? " ")
+                userViewModel.getUser(userId: self.ProfileUserId)
         }
         }
         
     }
 }
 
-struct ProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileView()
+//struct ProfileView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProfileView( userId: userId as? String ?? "")
+//    }
+//}
+
+
+extension View {
+    func Print(_ vars: Any...) -> some View {
+        for v in vars { print(v) }
+        return EmptyView()
     }
 }

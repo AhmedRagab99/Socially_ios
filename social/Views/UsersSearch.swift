@@ -37,14 +37,14 @@ struct UsersSearch: View {
                                 
                            
 
-                                Text(item.email ?? "UserName")
+                                Text(item.name ?? "UserName")
                                     .font(.subheadline)
                                     .fontWeight(.light)
                                     .foregroundColor(.secondary)
                             }
                             .onTapGesture {
                                 showUser.toggle()
-                              //  userId = item.id ?? ""
+                                userId = item.id ?? ""
                              
                             }
                         }
@@ -62,7 +62,8 @@ struct UsersSearch: View {
             .sheet(isPresented: $showUser, onDismiss: {
                 showUser = false
                                       }, content: {
-                                       // ProfileView(userId: userId)
+                                        ProfileView(ProfileUserId: userId)
+                                            .padding(.top)
                                   })
         }
         

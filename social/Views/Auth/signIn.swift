@@ -28,6 +28,7 @@ struct LoginView: View {
                 if self.Authbserver.isLoading == true{
                     VStack{
                         LoadingView(isLoading:self.Authbserver.isLoading,retryAction: nil)
+                      
                     }
                 }
                 
@@ -101,7 +102,7 @@ struct LoginView: View {
                                
                             }
                             else {
-                                DispatchQueue.main.asyncAfter(deadline: .now()+1.2){
+                                DispatchQueue.main.asyncAfter(deadline: .now()+3){
                                 self.showAlert.toggle()
                                 }}
                             

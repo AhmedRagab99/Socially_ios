@@ -17,7 +17,7 @@ struct TabBar: View {
         TabView {
             
             NavigationView{
-                PostView()
+                PostView(showMyPosts: true)
                     .navigationBarTitle("Following")
                     
                     .navigationBarItems(leading:
@@ -28,7 +28,7 @@ struct TabBar: View {
                                             }) {
                                                 Text("logout")
                                                     .font(.headline)
-                                                    .foregroundColor(.green)
+                                                    .foregroundColor(.blue)
                                             }
                                         ,trailing:
                                             HStack(spacing:15) {
@@ -62,59 +62,24 @@ struct TabBar: View {
             }
             
             
-         
+            
             NavigationView {
                 UsersSearch()
                     .navigationTitle("Search")
             }
             
-                    .tabItem {
-                        Image(systemName: "magnifyingglass")
-                            .imageScale(.large)
-                        Text("search")
-                }
+            .tabItem {
+                Image(systemName: "magnifyingglass")
+                    .imageScale(.large)
+                Text("search")
+            }
             
             
             
             
             NavigationView{
                 addPostView()
-                    
-                    
-                    .navigationBarItems(leading:
-                                            
-                                            Button(action: {
-                                                helper.deleteApiToken()
-                                                helper.goSignIn()
-                                            }) {
-                                                Text("logout")
-                                                    .font(.headline)
-                                                    .foregroundColor(.green)
-                                            }
-                                        ,trailing:
-                                            HStack(spacing:15) {
-                                                
-                                                AnimatedImage(url:URL(string: userPic as? String ?? ""))
-                                                    .resizable()
-                                                    .clipShape(Circle())
-                                                    .frame(width: 40, height: 40)
-                                                
-                                                Button(action: {
-                                                    
-                                                    helper.goHome()
-                                                    
-                                                    
-                                                }) {
-                                                    Image(systemName:"arrow.2.squarepath")
-                                                        .foregroundColor(Color.primary)
-                                                        .imageScale(.large)
-                                                }
-                                                
-                                                
-                                                
-                                                
-                                            }
-                    )
+                
             }
             .tabItem {
                 Image(systemName: "plus.app.fill")
@@ -126,10 +91,10 @@ struct TabBar: View {
             
             NavigationView{
                 
-                PostView()
-                  
-                    .navigationBarTitle("Following")
-
+                PostView(showMyPosts: false)
+                    
+                    .navigationBarTitle("My Posts")
+                    
                     
                     .navigationBarItems(leading:
                                             
@@ -139,7 +104,7 @@ struct TabBar: View {
                                             }) {
                                                 Text("logout")
                                                     .font(.headline)
-                                                    .foregroundColor(.green)
+                                                    .foregroundColor(.blue)
                                             }
                                         ,trailing:
                                             HStack(spacing:15) {
@@ -172,20 +137,18 @@ struct TabBar: View {
                 Text("favorites")
             }
             
-
-    
+            
+            
             NavigationView {
-                ProfileView()
+                ProfileView(ProfileUserId: userId as! String)
                     .navigationTitle("Profile")
-          
+                
             }
             .tabItem {
                 Image(systemName: "person.fill")
                     .imageScale(.large)
                 Text("profile")
-        }
-            
-            
+            }
             
         }
         
