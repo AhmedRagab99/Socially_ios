@@ -19,7 +19,7 @@ class PostApi: BaseApi<PostNetworking> {
       
     
     
-    func getAllPosts(completion:@escaping (Result<PostModel?,NSError>)->Void){
+    func getAllPosts(completion:@escaping (Result<PostModel?,ApiError>)->Void){
         self.fetchData(target: .getAllPosts, responceClass: PostModel.self) { (result) in
             completion(result)
         }
@@ -27,7 +27,7 @@ class PostApi: BaseApi<PostNetworking> {
     
     
     
-    func getPostsByMe(completion:@escaping(Result<PostModel?,NSError>)->Void){
+    func getPostsByMe(completion:@escaping(Result<PostModel?,ApiError>)->Void){
         self.fetchData(target: .getMyPosts, responceClass: PostModel.self) { (result) in
             completion(result)
         }
@@ -35,44 +35,44 @@ class PostApi: BaseApi<PostNetworking> {
     
     
     
-    func getFollowingPosts(completion:@escaping(Result<PostModel?,NSError>)->Void){
+    func getFollowingPosts(completion:@escaping(Result<PostModel?,ApiError>)->Void){
         self.fetchData(target: .getFollowingPosts, responceClass: PostModel.self) { (result) in
             completion(result)
         }
     }
     
     
-    func likePost(postId:String,completion:@escaping(Result<Post?,NSError>)->Void){
+    func likePost(postId:String,completion:@escaping(Result<Post?,ApiError>)->Void){
         self.fetchData(target: .likePost(postId: postId),responceClass: Post.self) { (result) in
             completion(result)
         }
     }
     
-    func unlikePost(postId:String,completion:@escaping(Result<Post?,NSError>)->Void){
+    func unlikePost(postId:String,completion:@escaping(Result<Post?,ApiError>)->Void){
         self.fetchData(target: .unlikePost(postId: postId),responceClass: Post.self) { (result) in
             completion(result)
         }
     }
     
-    func comment(text:String,postId:String,completion:@escaping((Result<Post?,NSError>)->Void)){
+    func comment(text:String,postId:String,completion:@escaping((Result<Post?,ApiError>)->Void)){
         self.fetchData(target: .comment(text: text, postId: postId), responceClass: Post.self) { (result) in
               completion(result)
           }
       }
-    func uncomment(text:String,postId:String,completion:@escaping((Result<Post?,NSError>)->Void)){
+    func uncomment(text:String,postId:String,completion:@escaping((Result<Post?,ApiError>)->Void)){
       self.fetchData(target: .uncomment(text: text, postId: postId), responceClass: Post.self) { (result) in
             completion(result)
         }
     }
     
     
-    func createPost(text:String,imageUrl:String,completion:@escaping((Result<Post?,NSError>)->Void)){
+    func createPost(text:String,imageUrl:String,completion:@escaping((Result<Post?,ApiError>)->Void)){
         self.fetchData(target: .createPost(text: text, imgageUrl: imageUrl), responceClass: Post.self) { (result) in
             completion(result)
         }
     }
     
-    func deletePost(postId:String,completion:@escaping((Result<Message?,NSError>)->Void)){
+    func deletePost(postId:String,completion:@escaping((Result<Message?,ApiError>)->Void)){
         self.fetchData(target:.deletePost(postId: postId) ,responceClass: Message.self) { (result) in
                completion(result)
            }

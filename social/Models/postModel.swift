@@ -16,8 +16,9 @@ struct PostModel: Codable {
    
 }
 
+
 // MARK: - Post
-struct Post: Codable {
+struct Post: Codable,Identifiable {
     var pic: String?
     var likes: [String]?
     var id, text: String?
@@ -34,17 +35,16 @@ struct Post: Codable {
         
     }
 }
-
 // MARK: - Comment
-struct Comment: Codable {
+struct Comment: Codable,Identifiable {
     var created, id, text: String?
-    var userId: String?
+    var userId: User?
 
     enum CodingKeys: String, CodingKey {
         case created
         case id = "_id"
         case text
-        case userId = "user"
+        case userId = "postedBy"
     }
 }
 
