@@ -21,6 +21,14 @@
 		D00E04D224B0D0B100403532 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00E04D124B0D0B100403532 /* TabBar.swift */; };
 		D01B51E424DB345E002A7F5D /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01B51E324DB345E002A7F5D /* LottieView.swift */; };
 		D01B51E624DB3D16002A7F5D /* image.json in Resources */ = {isa = PBXBuildFile; fileRef = D01B51E524DB3D16002A7F5D /* image.json */; };
+		D01E61F924DB577600EFFBC8 /* SmallWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01E61F824DB577600EFFBC8 /* SmallWidgetView.swift */; };
+		D01E61FA24DB58A300EFFBC8 /* SmallWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01E61F824DB577600EFFBC8 /* SmallWidgetView.swift */; };
+		D01E61FB24DB59C500EFFBC8 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA9A4524A6BEB7006B90EA /* UserModel.swift */; };
+		D01E61FC24DB59C800EFFBC8 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E1513924A84E2C0003F007 /* ProfileModel.swift */; };
+		D01E61FE24DB5A3100EFFBC8 /* MediemWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01E61FD24DB5A3100EFFBC8 /* MediemWidgetView.swift */; };
+		D01E61FF24DB5C1200EFFBC8 /* MediemWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01E61FD24DB5A3100EFFBC8 /* MediemWidgetView.swift */; };
+		D01E620524DB64B500EFFBC8 /* FollowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01E620424DB64B500EFFBC8 /* FollowerView.swift */; };
+		D01E620724DB754D00EFFBC8 /* FollowingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01E620624DB754D00EFFBC8 /* FollowingView.swift */; };
 		D03BAA5A24B1CB7400C1F34D /* ImageUploadModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03BAA5924B1CB7400C1F34D /* ImageUploadModel.swift */; };
 		D03E202F24A68A2600553E14 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03E202E24A68A2600553E14 /* TargetType.swift */; };
 		D03E203124A68DC200553E14 /* BaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03E203024A68DC200553E14 /* BaseApi.swift */; };
@@ -114,6 +122,10 @@
 		D00E04D124B0D0B100403532 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		D01B51E324DB345E002A7F5D /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		D01B51E524DB3D16002A7F5D /* image.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = image.json; sourceTree = "<group>"; };
+		D01E61F824DB577600EFFBC8 /* SmallWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidgetView.swift; sourceTree = "<group>"; };
+		D01E61FD24DB5A3100EFFBC8 /* MediemWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediemWidgetView.swift; sourceTree = "<group>"; };
+		D01E620424DB64B500EFFBC8 /* FollowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerView.swift; sourceTree = "<group>"; };
+		D01E620624DB754D00EFFBC8 /* FollowingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingView.swift; sourceTree = "<group>"; };
 		D03BAA5924B1CB7400C1F34D /* ImageUploadModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadModel.swift; sourceTree = "<group>"; };
 		D03E202E24A68A2600553E14 /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
 		D03E203024A68DC200553E14 /* BaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApi.swift; sourceTree = "<group>"; };
@@ -379,6 +391,8 @@
 			isa = PBXGroup;
 			children = (
 				D0CE80FD24DA422E006EB062 /* socialWidget.swift */,
+				D01E61F824DB577600EFFBC8 /* SmallWidgetView.swift */,
+				D01E61FD24DB5A3100EFFBC8 /* MediemWidgetView.swift */,
 				D0CE80FF24DA422E006EB062 /* socialWidget.intentdefinition */,
 				D0CE810024DA422F006EB062 /* Assets.xcassets */,
 				D0CE810224DA422F006EB062 /* Info.plist */,
@@ -395,6 +409,8 @@
 				D0D6A54324D0E20F009DFEFE /* CardView.swift */,
 				D0D6A54424D0E20F009DFEFE /* BioView.swift */,
 				D0D6A54924D0E20F009DFEFE /* TopView.swift */,
+				D01E620424DB64B500EFFBC8 /* FollowerView.swift */,
+				D01E620624DB754D00EFFBC8 /* FollowingView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -584,6 +600,7 @@
 				D0B9180524BCB5CA00999E44 /* LikeCommentView.swift in Sources */,
 				D0B2B4DC24A6B41D00F641B6 /* UserApi.swift in Sources */,
 				D069F61B24D9C0C600ACFFB1 /* AllUsersModel.swift in Sources */,
+				D01E61F924DB577600EFFBC8 /* SmallWidgetView.swift in Sources */,
 				D0B9180724BCB5FC00999E44 /* LikesCommentDetailView.swift in Sources */,
 				D0FB00B824D9FE7C007D80E7 /* EditButtonView.swift in Sources */,
 				D0A671BB24B75A2F0080526A /* addPostView.swift in Sources */,
@@ -603,6 +620,7 @@
 				D0B9180924BCBC1100999E44 /* CommentView.swift in Sources */,
 				D0CA9A4624A6BEB7006B90EA /* UserModel.swift in Sources */,
 				D03E203324A6910300553E14 /* CustomInterceptor.swift in Sources */,
+				D01E61FE24DB5A3100EFFBC8 /* MediemWidgetView.swift in Sources */,
 				D00C093024B4028B00D6D2AE /* ActivityIndicatorView.swift in Sources */,
 				D007B91C24B1A18D0033A89B /* SignUpView.swift in Sources */,
 				D0D6A54C24D0E20F009DFEFE /* CardView.swift in Sources */,
@@ -615,11 +633,13 @@
 				D03E203B24A6999400553E14 /* PostApi.swift in Sources */,
 				D0D532A524A977530064CBF1 /* PostView.swift in Sources */,
 				D007B90D24B18C180033A89B /* pushContentUp.swift in Sources */,
+				D01E620724DB754D00EFFBC8 /* FollowingView.swift in Sources */,
 				D01B51E424DB345E002A7F5D /* LottieView.swift in Sources */,
 				D0E1CEB724CF5C1A00BA693B /* SearchBar.swift in Sources */,
 				D00E04CE24B0ADBB00403532 /* postsObserver.swift in Sources */,
 				D0D6A54B24D0E20F009DFEFE /* ProfileView.swift in Sources */,
 				D09E2A4824B71E6E0003B17E /* SearchView.swift in Sources */,
+				D01E620524DB64B500EFFBC8 /* FollowerView.swift in Sources */,
 				D00C093624B44E7400D6D2AE /* RefreshController.swift in Sources */,
 				D076EF9224A5BF1E00BC4D78 /* ContentView.swift in Sources */,
 				D0D6A55224D0E20F009DFEFE /* TopView.swift in Sources */,
@@ -632,7 +652,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D01E61FA24DB58A300EFFBC8 /* SmallWidgetView.swift in Sources */,
 				D0CE80FE24DA422E006EB062 /* socialWidget.swift in Sources */,
+				D01E61FF24DB5C1200EFFBC8 /* MediemWidgetView.swift in Sources */,
+				D01E61FC24DB59C800EFFBC8 /* ProfileModel.swift in Sources */,
+				D01E61FB24DB59C500EFFBC8 /* UserModel.swift in Sources */,
 				D0CE810324DA422F006EB062 /* socialWidget.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

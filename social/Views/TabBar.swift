@@ -84,7 +84,7 @@ struct TabBar: View {
             .tabItem {
                 Image(systemName: "plus.app.fill")
                     .imageScale(.large)
-                Text("Camera")
+                Text("ADD")
                     .bold()
                     .font(.largeTitle)
             }

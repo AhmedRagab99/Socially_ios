@@ -10,6 +10,7 @@ import WidgetKit
 import SwiftUI
 import Intents
 
+
 struct Provider: IntentTimelineProvider {
     public func snapshot(for configuration: ConfigurationIntent, with context: Context, completion: @escaping (SimpleEntry) -> ()) {
         let entry = SimpleEntry(date: Date(), configuration: configuration)
@@ -50,36 +51,14 @@ struct socialWidgetEntryView : View {
     var body: some View {
         
         if family == .systemSmall{
-        VStack (alignment:.leading,spacing:4){
-            Text("Newest")
-                .font(Font.footnote.smallCaps())
-                .foregroundColor(.secondary)
-            
-            Image("test")
-                .resizable()
-                .cornerRadius(15)
-                
-            Text("Hellow From Paris With Socially App")
-                .font(.subheadline)
-                .fontWeight(.semibold)
-        }
-        .padding(12)
+            SmallWidgetView()
+                .padding(12)
+                .background(Color(.secondarySystemBackground))
+
         }
         else {
-            VStack (alignment:.leading,spacing:4){
-                Text("Newest")
-                    .font(Font.footnote.smallCaps())
-                    .foregroundColor(.secondary)
-                
-                Image("test")
-                    .resizable()
-                    clipShape(Rectangle())
-                        .cornerRadius(5)
-                    
-                Text("Added an Amazing photo for the City of Paris with a great View")
-                   
-            }
-            .padding(12)
+            MediemWidgetView()
+            
         }
     }
 }

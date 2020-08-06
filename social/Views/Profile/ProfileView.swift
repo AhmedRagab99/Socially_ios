@@ -3,6 +3,7 @@ import SDWebImageSwiftUI
 
 
 
+
 struct ProfileView: View {
     
     @ObservedObject  var userViewModel = UserObserver()
@@ -13,6 +14,7 @@ struct ProfileView: View {
     @State var  ProfileUserId : String
     @State var showSheet = false
     @State var isFollowing = false
+  
     
     
     var body: some View {
@@ -116,7 +118,7 @@ struct ProfileView: View {
                         LottieView(fileName: "Empty")
                             .frame(width: 200, height: 200, alignment: .center)
                             
-                        Text(" No Posts Here!! Please Add Posts ")
+                        Text(" No Posts Yet!! ")
                             .font(.headline)
                     }
                     .padding()

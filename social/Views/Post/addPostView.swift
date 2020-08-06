@@ -75,8 +75,8 @@ struct addPostView: View {
                                    .font(.headline)
                                    .foregroundColor(.primary)
                                    .padding()
-                                   .frame(width: 300, height: 50)
-                                   .background(Color.green.opacity(0.8))
+                                   .frame(width: 150, height: 50)
+                                   .background(Color.blue.opacity(0.8))
                                    .cornerRadius(20.0)
                                    .shadow(radius: 5)
                                

@@ -9,5 +9,5 @@ target 'social' do
 pod 'Alamofire'
 pod 'SDWebImageSwiftUI'
 pod 'lottie-ios'
-
 end
+
