@@ -19,7 +19,7 @@ class BaseApi<T:TargetType> {
         let params = buildParams(task: target.task)
         
         AF.request(target.baseUrl+target.path,method: method,parameters: params.0,encoding: params.1,headers:headers,interceptor: CustomInterceptor())
-            .validate(statusCode:200...300)
+            .validate(statusCode:200...310)
             .responseJSON { (responce) in
                 guard let statusCode = responce.response?.statusCode else {
                     
@@ -45,9 +45,9 @@ class BaseApi<T:TargetType> {
                     decoder.dataDecodingStrategy = .base64
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
                     do{
-                        let jsonObject = try? decoder.decode(M.self, from: jsonData)
+                        let jsonObject = try decoder.decode(M.self, from: jsonData)
                         //error
-                        print(jsonObject)
+                        //print(jsonObject)
                         completion(.success(jsonObject))
                         
                     }catch(let error){

@@ -21,6 +21,7 @@ struct User: Codable,Identifiable {
     var id: String?
     var name: String?
     var email: String?
+    var pio:String?
     var createdAt: String?
     var following:[String]?
     var followers:[String]?
