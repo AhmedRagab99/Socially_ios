@@ -57,7 +57,9 @@ struct CommentsView:View {
                                     Alert(title: Text("delete comment"), message: Text("\(self.observer.error)"), primaryButton: .default(Text("Ok"), action: {
                                         self.observer.uncomment(text: i.text ?? "", postId: self.item.id ?? "")
                                         // self.presentationMode.wrappedValue.dismiss()
-                                                 helper.goHome()
+                                            // helper.goHome()
+                                        self.presentationMode.wrappedValue.dismiss()
+
                                     }), secondaryButton: .destructive(Text("Cancel")))
                                 }
                                 .foregroundColor(.primary)
@@ -103,15 +105,12 @@ struct CommentsView:View {
                                 Text("Send")
                                     .foregroundColor(Color.blue)
                                     .onTapGesture {
-                                        print(self.item.id)
+                                       // print(self.item.id)
                                         self.observer.comment(text: self.comment, postId: self.item.id ?? "")
-                                       // self.presentationMode.wrappedValue.dismiss()
-                                        helper.goHome()
-
+                                        self.presentationMode.wrappedValue.dismiss()
+                                       // helper.goHome()
                                 }
                             }
-                                
-                                          
                             .padding(.horizontal,6)
                         }
                                .offset(y: -keyboardResponder.currentHeight*0.9)

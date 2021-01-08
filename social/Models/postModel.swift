@@ -35,7 +35,6 @@ struct Post: Codable,Identifiable {
         
     }
 }
-
 // MARK: - Comment
 struct Comment: Codable,Identifiable {
     var created, id, text: String?

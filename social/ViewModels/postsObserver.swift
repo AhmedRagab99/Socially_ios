@@ -17,7 +17,7 @@ class PostsObserver:ObservableObject{
     @Published var postData = Post()
     @Published var likePostData = Post()
     @Published var unlikePostData = Post()
-       @Published var commentPost = Post()
+    @Published var commentPost = Post()
 
     @Published var message = Message()
     
@@ -199,7 +199,7 @@ class PostsObserver:ObservableObject{
                      self.commentPost = data
                      self.isLoading.toggle()
                     print(self.commentPost)
-                    print (responce)
+                    print (responce.debugDescription)
                  }
              case .failure(let error):
                  self.isError.toggle()
@@ -223,7 +223,7 @@ class PostsObserver:ObservableObject{
                     self.commentPost = data
                     self.isLoading.toggle()
                    print(self.commentPost)
-                   print (responce)
+                    print (responce.debugDescription)
                 }
             case .failure(let error):
                 self.isError.toggle()

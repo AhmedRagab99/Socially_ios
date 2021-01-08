@@ -11,7 +11,7 @@ import Alamofire
 
 
 enum AuthNetworking{
-    case signUp(name:String,email:String,piciture:String,password:String)
+    case signUp(name:String,email:String,piciture:String,password:String,pio:String)
     case singIn(email:String,password:String)
 }
 
@@ -40,8 +40,8 @@ extension AuthNetworking:TargetType{
     
     var task: Task {
     switch self{
-        case .signUp(let name,let email, let piciture, let password):
-            return .requestParameters(parameters: ["name":name,"email":email,"pic":piciture,"password":password], encoding:JSONEncoding.default )
+        case .signUp(let name,let email, let piciture, let password,let pio):
+            return .requestParameters(parameters: ["name":name,"email":email,"pic":piciture,"password":password,"pio":pio], encoding:JSONEncoding.default )
             
         case .singIn(let email, let password):
             

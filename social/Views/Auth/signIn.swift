@@ -28,6 +28,8 @@ struct LoginView: View {
                 if self.Authbserver.isLoading == true{
                     VStack{
                         LoadingView(isLoading:self.Authbserver.isLoading,retryAction: nil)
+                 
+                      
                     }
                 }
                 
@@ -35,13 +37,18 @@ struct LoginView: View {
                 VStack(alignment: .center) {
                     Spacer()
                     
-                    Image("signIn")
-                        .resizable()
-                        .frame(width: 250, height: 250)
-                        .clipShape(Circle())
-                        .overlay(Circle().stroke(Color.white, lineWidth: 4))
-                        .shadow(radius: 10.0, x: 20, y: 10)
-                        .padding(.bottom, 50)
+//                    Image("signIn")
+//                        .resizable()
+//                        .frame(width: 250, height: 250)
+//                        .clipShape(Circle())
+//                        .overlay(Circle().stroke(Color.white, lineWidth: 4))
+//                        .shadow(radius: 10.0, x: 20, y: 10)
+//                        .padding(.bottom, 50)
+                    
+                    
+                    LottieView(fileName: "SignUp")
+                        //.frame(width: 200, height: 200, alignment: .center)
+                        .padding()
                     
                   
                     
@@ -52,7 +59,7 @@ struct LoginView: View {
                                 .frame(width: 44, height: 44)
                                 .background(Color.white)
                                 .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                                .shadow(color: Color.black.opacity(0.15), radius: 5, x: 0, y: 5)
+                                .shadow(color: Color.primary.opacity(0.15), radius: 5, x: 0, y: 5)
                                 .padding(.leading)
                             
                             TextField("Your Email".uppercased(), text: $email)
@@ -101,7 +108,7 @@ struct LoginView: View {
                                
                             }
                             else {
-                                DispatchQueue.main.asyncAfter(deadline: .now()+1.2){
+                                DispatchQueue.main.asyncAfter(deadline: .now()+3){
                                 self.showAlert.toggle()
                                 }}
                             
@@ -113,7 +120,7 @@ struct LoginView: View {
                             .foregroundColor(.primary)
                             .padding()
                             .frame(width: 300, height: 50)
-                            .background(Color.green.opacity(0.8))
+                            .background(Color.blue.opacity(0.8))
                             .cornerRadius(20.0)
                             .shadow(radius: 5)
                     }
@@ -132,7 +139,7 @@ struct LoginView: View {
                         } ){
                             Text("Sign Up")
                                 .font(.headline)
-                                .foregroundColor(.green)
+                                .foregroundColor(Color.blue.opacity(0.9))
                                 .padding()
                         }
                         
@@ -157,6 +164,7 @@ struct LoginView: View {
 struct signIn_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
+            .preferredColorScheme(.light)
         
         
         

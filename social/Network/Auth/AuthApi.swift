@@ -29,8 +29,8 @@ class AuthApi:BaseApi<AuthNetworking>{
     
     
     
-    func signUp(email:String,name:String,picuture:String,password:String,completion:@escaping (Result<Message?,ApiError>)->Void){
-        self.fetchData(target: .signUp(name: name, email: email, piciture: picuture, password: password), responceClass: Message.self) { (result) in
+    func signUp(email:String,name:String,picuture:String,password:String,pio:String,completion:@escaping (Result<Message?,ApiError>)->Void){
+        self.fetchData(target: .signUp(name: name, email: email, piciture: picuture, password: password,pio:pio), responceClass: Message.self) { (result) in
             completion(result)
         }
     }

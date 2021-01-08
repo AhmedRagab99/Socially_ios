@@ -8,7 +8,6 @@
 
 import SwiftUI
 import Alamofire
-import UIKit
 
 struct SignUpView: View {
     
@@ -18,6 +17,7 @@ struct SignUpView: View {
     @State private var email = ""
     @State private var password = ""
     @State private var name = ""
+    @State private var pio = ""
     var link = ""
     @State private var pic = ""
     @State private var showAlert = false
@@ -44,14 +44,14 @@ struct SignUpView: View {
                                 .resizable()
                                 .frame(width: 250, height: 250)
                                 .clipShape(Circle())
-                                .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                                .overlay(Circle().stroke(Color.secondary, lineWidth: 4))
                                 .shadow(radius: 10.0, x: 20, y: 10)
                                 .padding(.bottom, 50)
                                 .onTapGesture {
-                                    withAnimation{
-                                        self.showImagePicker.toggle()
-                                    }
-                            }
+                                    self.showImagePicker.toggle()
+                                }
+                              
+                                
                                 //5
                                 .sheet(isPresented: $showImagePicker, onDismiss: {
                                     self.showImagePicker = false
@@ -131,6 +131,30 @@ struct SignUpView: View {
                                     .frame(height: 44)
                                 
                             }
+                            
+                            
+                            Divider().padding(.leading, 80)
+                            
+                            
+                            
+                            
+                            HStack {
+                                Image(systemName: "pencil.and.ellipsis.rectangle")
+                                    .foregroundColor(Color(#colorLiteral(red: 0.6549019608, green: 0.7137254902, blue: 0.862745098, alpha: 1)))
+                                    .frame(width: 44, height: 44)
+                                    .background(Color.white)
+                                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                                    .shadow(color: Color.black.opacity(0.15), radius: 5, x: 0, y: 5)
+                                    .padding(.leading)
+                                
+                                SecureField("Pio".uppercased(), text: $pio)
+                                    .keyboardType(.default)
+                                    .font(.subheadline)
+                                    
+                                    .padding(.leading)
+                                    .frame(height: 44)
+                                
+                            }
                         }
                         .padding()
                         
@@ -147,7 +171,7 @@ struct SignUpView: View {
                                 .foregroundColor(.primary)
                                 .padding()
                                 .frame(width: 300, height: 50)
-                                .background(Color.green.opacity(0.8))
+                                .background(Color.blue.opacity(0.8))
                                 .cornerRadius(20.0)
                                 .shadow(radius: 5)
                         }
@@ -166,7 +190,7 @@ struct SignUpView: View {
                             } ){
                                 Text("Sign In now")
                                     .font(.headline)
-                                    .foregroundColor(.green)
+                                    .foregroundColor(.blue)
                                     .padding()
                             }
                             
@@ -214,7 +238,7 @@ struct SignUpView: View {
                             self.pic = dataJson["link"] as! String
                             print(self.pic)
                             
-                            self.Authbserver.signUp(email: self.email, name: self.name, password: self.password, pic: self.pic)
+                            self.Authbserver.signUp(email: self.email, name: self.name, password: self.password, pic: self.pic, pio: pio)
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                 print(self.Authbserver.isSignUn)
                                 
@@ -243,6 +267,8 @@ struct SignUpView: View {
 
 struct SignUp_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView()
+        Group {
+            SignUpView()
+        }
     }
 }

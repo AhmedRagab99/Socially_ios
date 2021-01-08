@@ -52,15 +52,18 @@ class AuthObserver:ObservableObject{
                 
                 helper.saveApiToken(token: token)
                 
-                UserDefaults.standard.setValue(data.user?.pic, forKeyPath: "userPic")
-                 UserDefaults.standard.setValue(data.user?.id, forKeyPath: "userId")
+                  UserDefaults.standard.setValue(data.user?.pic, forKeyPath: "userPic")
+                   UserDefaults.standard.setValue(data.user?.id, forKeyPath: "userId")
                     UserDefaults.standard.setValue(data.user?.name, forKeyPath: "userName")
-                UserDefaults.standard.setValue(data.user?.followers, forKeyPath: "followers")
-                   UserDefaults.standard.setValue(data.user?.following, forKeyPath: "following")
+                UserDefaults.standard.setValue(data.user?.followers?.count, forKeyPath: "followers")
+                UserDefaults.standard.setValue(data.user?.following?.count, forKeyPath: "following")
+                 UserDefaults.standard.setValue(data.user?.pio, forKeyPath: "pio")
                 
                 self.signInPuplisher = data
                 
+                DispatchQueue.main.asyncAfter(deadline: .now()+2){
                 helper.goHome()
+                }
                 
             case .failure(let error):
                 self.isError.toggle()
@@ -71,8 +74,8 @@ class AuthObserver:ObservableObject{
         }
     }
     
-    func signUp(email:String,name:String,password:String,pic:String){
-        AuthApi.shared.signUp(email: email, name: name, picuture: pic, password: password) { [weak self] (result) in
+    func signUp(email:String,name:String,password:String,pic:String,pio:String){
+        AuthApi.shared.signUp(email: email, name: name, picuture: pic, password: password, pio: pio) { [weak self] (result) in
             guard let self = self else {return}
             self.isLoading = true
 
